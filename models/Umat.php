@@ -48,7 +48,8 @@ class Umat extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nama', 'agama', 'tempat_tgl_lahir', 'jenis_kelamin', 'hub_KRT', 'suku', 'status_pendidikan', 'jenjang_pendidikan', 'bidang_studi', 'pekerjaan', 'gol_darah', 'status_kesehatan', 'waktu_baptis', 'tempat_tgl_baptis', 'tempat_tgl_penguatan', 'status_kawin', 'jabatan_sosial', 'tempat_tinggal', 'lama_tinggal', 'status_gerejawi', 'keterlibatan', 'liber_baptizatorium', 'notum'], 'required'],
+            // [['nama', 'agama', 'tempat_tgl_lahir', 'jenis_kelamin', 'hub_KRT', 'suku', 'status_pendidikan', 'jenjang_pendidikan', 'bidang_studi', 'pekerjaan', 'gol_darah', 'status_kesehatan', 'waktu_baptis', 'tempat_tgl_baptis', 'tempat_tgl_penguatan', 'status_kawin', 'jabatan_sosial', 'tempat_tinggal', 'lama_tinggal', 'status_gerejawi', 'keterlibatan', 'liber_baptizatorium', 'notum'], 'required'],
+            [['nama'], 'required'],
             [['id', 'idkk','agama', 'jenis_kelamin', 'hub_KRT', 'status_pendidikan', 'jenjang_pendidikan', 'gol_darah', 'status_kesehatan', 'waktu_baptis', 'status_kawin', 'jabatan_sosial', 'lama_tinggal', 'status_gerejawi', 'keterlibatan', 'notum'], 'integer'],
             [['nama', 'suku', 'bidang_studi', 'tempat_tgl_lahir', 'pekerjaan', 'tempat_tgl_baptis', 'tempat_tgl_penguatan', 'tempat_tinggal', 'liber_baptizatorium'], 'string', 'max' => 255],
             [['id'], 'unique'],
@@ -89,7 +90,7 @@ class Umat extends \yii\db\ActiveRecord
         ];
     }
 
-    public static function agama($value=NULL)
+    public static function agama($value=NULL, $show=FALSE)
     {
         $options = [
             '' => "Pilih",
@@ -105,14 +106,16 @@ class Umat extends \yii\db\ActiveRecord
             10 => "Katekumen"
         ];
 
-        if($value===NULL){
+        if($value===NULL && $show==TRUE){
+            return '';
+        }else if($value===NULL){
             return $options;
         }else{
             return isset($options[$value]) ? $options[$value] : '';
         }
     }
 
-    public static function jenis_kelamin($value=NULL)
+    public static function jenis_kelamin($value=NULL, $show=FALSE)
     {
         $options = [
             '' => "Pilih",
@@ -120,14 +123,16 @@ class Umat extends \yii\db\ActiveRecord
             2 => "Perempuan",
         ];
 
-        if($value===NULL){
+        if($value===NULL && $show==TRUE){
+            return '';
+        }else if($value===NULL){
             return $options;
         }else{
             return isset($options[$value]) ? $options[$value] : '';
         }
     }
 
-    public static function hub_krt($value=NULL)
+    public static function hub_krt($value=NULL, $show=FALSE)
     {
         $options = [
             '' => "Pilih",
@@ -143,14 +148,16 @@ class Umat extends \yii\db\ActiveRecord
             10 => "Lain - lain"
         ];
 
-        if($value===NULL){
+        if($value===NULL && $show==TRUE){
+            return '';
+        }else if($value===NULL){
             return $options;
         }else{
             return isset($options[$value]) ? $options[$value] : '';
         }
     }    
 
-    public static function status_pendidikan($value=NULL)
+    public static function status_pendidikan($value=NULL, $show=FALSE)
     {
         $options = [
             '' => 'Pilih', 
@@ -159,14 +166,16 @@ class Umat extends \yii\db\ActiveRecord
             '3'=> 'Sedang di sekolah Non Katolik'
         ];
 
-        if($value===NULL){
+        if($value===NULL && $show==TRUE){
+            return '';
+        }else if($value===NULL){
             return $options;
         }else{
             return isset($options[$value]) ? $options[$value] : '';
         }
     }    
 
-    public static function jenjang_pendidikan($value=NULL, $status=FALSE)
+    public static function jenjang_pendidikan($value=NULL, $status=FALSE, $show=FALSE)
     {
         $tamat = [
             0 => 'Belum sekolah',
@@ -202,7 +211,9 @@ class Umat extends \yii\db\ActiveRecord
             27 => 'S3',
         ];
 
-        if($status){
+        if($value===NULL && $show==TRUE){
+            return '';
+        }else if($status){
             $options = array_merge([''=>'Pilih'], $tamat, $sekolahKatolik, $sekolahNonKatolik);
             return isset($options[$value]) ? $options[$value] : '';
         }else{
@@ -213,14 +224,14 @@ class Umat extends \yii\db\ActiveRecord
             }else if($value==3){
                 $option = $sekolahNonKatolik;
             }else{
-                $option = [];
+                $option = [''=>'Pilih'];
             }
 
             return $option;
         }
     }
 
-    public static function gol_darah($value=NULL)
+    public static function gol_darah($value=NULL, $show=FALSE)
     {
         $options = [
             '' => "Pilih",
@@ -231,14 +242,16 @@ class Umat extends \yii\db\ActiveRecord
             8 => "Tidak tahu",           
         ];
 
-        if($value===NULL){
+        if($value===NULL && $show==TRUE){
+            return '';
+        }else if($value===NULL){
             return $options;
         }else{
             return isset($options[$value]) ? $options[$value] : '';
         }
     }    
 
-    public static function status_kesehatan($value=NULL)
+    public static function status_kesehatan($value=NULL, $show=FALSE)
     {
         $options = [
             '' => "Pilih",
@@ -252,14 +265,16 @@ class Umat extends \yii\db\ActiveRecord
             55 => "Pikun",
         ];
  
-        if($value===NULL){
+        if($value===NULL && $show==TRUE){
+            return '';
+        }else if($value===NULL){
             return $options;
         }else{
             return isset($options[$value]) ? $options[$value] : '';
         }
     }    
          
-    public static function waktu_baptis($value=NULL)
+    public static function waktu_baptis($value=NULL, $show=FALSE)
     {
         $options = [
             '' => "Pilih",
@@ -275,14 +290,16 @@ class Umat extends \yii\db\ActiveRecord
             10 => "Katekumen",
         ];
  
-        if($value===NULL){
+        if($value===NULL && $show==TRUE){
+            return '';
+        }else if($value===NULL){
             return $options;
         }else{
             return isset($options[$value]) ? $options[$value] : '';
         }
     }               
 
-    public static function status_kawin($value=NULL)
+    public static function status_kawin($value=NULL, $show=FALSE)
     {
         $options = [
             '' => "Pilih",
@@ -300,14 +317,16 @@ class Umat extends \yii\db\ActiveRecord
             12 => "Nikah adat",
         ];
  
-        if($value===NULL){
+        if($value===NULL && $show==TRUE){
+            return '';
+        }else if($value===NULL){
             return $options;
         }else{
             return isset($options[$value]) ? $options[$value] : '';
         }
     }               
 
-    public static function jabatan_sosial($value=NULL)
+    public static function jabatan_sosial($value=NULL, $show=FALSE)
     {
         $options = [
             '' => "Pilih",
@@ -317,14 +336,16 @@ class Umat extends \yii\db\ActiveRecord
             4 => "Warga biasa",
         ];
  
-        if($value===NULL){
+        if($value===NULL && $show==TRUE){
+            return '';
+        }else if($value===NULL){
             return $options;
         }else{
             return isset($options[$value]) ? $options[$value] : '';
         }
     }               
 
-    public static function status_gerejawi($value=NULL)
+    public static function status_gerejawi($value=NULL, $show=FALSE)
     {
         $options = [
             '' => "Pilih",
@@ -337,14 +358,16 @@ class Umat extends \yii\db\ActiveRecord
             7 => "Tidak aktif",
         ];
  
-        if($value===NULL){
+        if($value===NULL && $show==TRUE){
+            return '';
+        }else if($value===NULL){
             return $options;
         }else{
             return isset($options[$value]) ? $options[$value] : '';
         }
     }               
 
-    public static function keterlibatan($value=NULL)
+    public static function keterlibatan($value=NULL, $show=FALSE)
     {
         $options = [
             '' => "Pilih",
@@ -356,14 +379,16 @@ class Umat extends \yii\db\ActiveRecord
             6 => "Warga umat biasa",
         ];
  
-        if($value===NULL){
+        if($value===NULL && $show==TRUE){
+            return '';
+        }else if($value===NULL){
             return $options;
         }else{
             return isset($options[$value]) ? $options[$value] : '';
         }
     }               
 
-    public static function notum($value=NULL)
+    public static function notum($value=NULL, $show=FALSE)
     {
         $options = [
             '' => "Pilih",
@@ -371,7 +396,10 @@ class Umat extends \yii\db\ActiveRecord
             2 => "KB : Keluarga perlu mendapat perhatian khusus",
         ];
  
-        if($value===NULL){
+
+        if($value===NULL && $show==TRUE){
+            return '';
+        }else if($value===NULL){
             return $options;
         }else{
             return isset($options[$value]) ? $options[$value] : '';

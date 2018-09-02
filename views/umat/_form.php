@@ -32,8 +32,7 @@ use yii\widgets\ActiveForm;
     <b>Pendidikan</b>
     <?= $form->field($model, 'status_pendidikan')->dropDownList($model::status_pendidikan()) ?>
 
-    <?= $form->field($model, 'jenjang_pendidikan')->dropDownList($model::jenjang_pendidikan()) ?>
-
+    <?= $form->field($model, 'jenjang_pendidikan')->dropDownList($model::jenjang_pendidikan($model->status_pendidikan)) ?>
     <?= $form->field($model, 'bidang_studi')->textInput() ?>
 
     <?= $form->field($model, 'pekerjaan')->textInput(['maxlength' => true]) ?>
@@ -76,7 +75,7 @@ use yii\widgets\ActiveForm;
     $(document).ready(function(argument) {
         $('#umat-status_pendidikan').on('change', function(){
             var id = this.value;
-            console.log(id)
+
             $.ajax({
                 type: "POST",
                 url: "/umat/getjenjangpendidikan",

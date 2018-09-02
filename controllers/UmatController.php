@@ -5,14 +5,14 @@ namespace app\controllers;
 use Yii;
 use app\models\Umat;
 use app\models\UmatSearch;
-use yii\web\Controller;
+use app\controllers\ControllerHelper;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * UmatController implements the CRUD actions for Umat model.
  */
-class UmatController extends Controller
+class UmatController extends ControllerHelper
 {
     /**
      * {@inheritdoc}
@@ -86,10 +86,10 @@ class UmatController extends Controller
             if(isset($_GET['id'])){
                 $model->idkk = (int)$_GET['id'];
             }
-            // echo'<pre>';print_r($model);die;
     
             if ($model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                $idkk = ($model->idkk==0) ? $model->id : $model->idkk;
+                return $this->redirect(['viewkk', 'id' => $idkk]);
             }
         }
 
@@ -138,6 +138,17 @@ class UmatController extends Controller
         return $this->redirect(['index']);
     }
 
+
+    public function actionDeletekk($id)
+    {
+        $models = Umat::find()->where("id=$id")->orWhere("idkk=$id")->all();
+
+        foreach ($models as $model) {
+            $model->delete();
+        }
+
+        return $this->redirect(['index']);
+    }
     /**
      * Finds the Umat model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

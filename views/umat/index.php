@@ -30,14 +30,14 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'agama',
                 'value' => function ($data) {
-                    return $data::agama($data->agama);
+                    return $data::agama($data->agama, TRUE);
                 },
             ],
             'tempat_tgl_lahir',
             [
                 'attribute' => 'jenis_kelamin',
                 'value' => function ($data) {
-                    return $data::jenis_kelamin($data->jenis_kelamin);
+                    return $data::jenis_kelamin($data->jenis_kelamin, TRUE);
                 },
             ],
             // 'hub_KRT',
@@ -58,7 +58,6 @@ $this->params['breadcrumbs'][] = $this->title;
             //'keterlibatan',
             //'liber_baptizatorium',
             //'notum',
-
             // ['class' => 'yii\grid\ActionColumn'],
             [
                 'class' => 'yii\grid\ActionColumn',
@@ -73,7 +72,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     },
                     'delete' => function ($url, $model) {
                         return Html::a('Hapus', $url, [
-                                    'title' => Yii::t('app', 'Hapus'), 'class' => 'btn btn-danger'
+                                    'title' => Yii::t('app', 'Hapus'), 
+                                    'class' => 'btn btn-danger',
+                                    'aria-label' => Yii::t('app', 'Hapus'),
+                                    'data-pjax' => '0',
+                                    'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this data?'),
+                                    'data-method' => 'post',
                         ]);
                     }
                 ],
