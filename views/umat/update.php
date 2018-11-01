@@ -5,9 +5,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Umat */
 
-$this->title = 'Memperbarui Data: ' . $model->nama;
-$this->params['breadcrumbs'][] = ['label' => 'Data Umat', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->nama, 'url' => ['view', 'id' => $model->id]];
+$this->title = 'Update Umat: ' . $model->id_umat;
+$this->params['breadcrumbs'][] = ['label' => 'Umats', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->id_umat, 'url' => ['view', 'id' => $model->id_umat]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="umat-update">

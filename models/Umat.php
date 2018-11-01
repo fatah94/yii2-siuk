@@ -7,30 +7,49 @@ use Yii;
 /**
  * This is the model class for table "umat".
  *
- * @property int $id
- * @property string $nama
- * @property int $agama
- * @property string $tempat_tgl_lahir
- * @property int $jenis_kelamin
- * @property int $hub_KRT
- * @property int $suku
- * @property int $status_pendidikan
- * @property int $jenjang_pendidikan
- * @property int $bidang_studi
- * @property string $pekerjaan
- * @property int $gol_darah
- * @property int $status_kesehatan
- * @property int $waktu_baptis
- * @property string $tempat_tgl_baptis
- * @property string $tempat_tgl_penguatan
- * @property int $status_kawin
- * @property int $jabatan_sosial
- * @property string $tempat_tinggal
- * @property int $lama_tinggal
- * @property int $status_gerejawi
- * @property int $keterlibatan
- * @property int $liber_baptizatorium
- * @property int $notum
+ * @property int $id_umat
+ * @property string $id_keuskupan
+ * @property string $id_paroki
+ * @property string $id_wilayah
+ * @property string $id_lingkungan
+ * @property string $alamat
+ * @property string $tempat_nikah
+ * @property string $tgl_nikah
+ * @property string $liber_matrimonium
+ * @property string $id_ekonomi
+ * @property string $id_jenis_rt
+ * @property string $np
+ * @property string $no_urut
+ * @property string $no_ktp
+ * @property string $nama_anggota_rt
+ * @property string $id_agama
+ * @property string $tempat_lahir
+ * @property string $tgl_lahir
+ * @property string $jen_kel
+ * @property string $id_hub_kk
+ * @property string $id_suku
+ * @property string $id_pendidikan
+ * @property string $id_bidstudi
+ * @property string $id_pekerjaan
+ * @property string $id_goldar
+ * @property string $id_sts_sehat
+ * @property string $tgl_upd_sts_sehat
+ * @property string $id_wkt_baptis
+ * @property string $tempat_baptis
+ * @property string $tgl_baptis
+ * @property string $status_krisma
+ * @property string $tempat_krisma
+ * @property string $tgl_krisma
+ * @property string $id_sts_kawin
+ * @property string $id_jbt_sosial
+ * @property string $tmp_tinggal
+ * @property string $tahun_mulai_tinggal
+ * @property string $status_komuni
+ * @property string $id_sts_gerejawi
+ * @property string $id_keterlibatan
+ * @property string $liberbap
+ * @property string $notum
+ * @property string $tgl_update
  */
 class Umat extends \yii\db\ActiveRecord
 {
@@ -48,11 +67,18 @@ class Umat extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            // [['nama', 'agama', 'tempat_tgl_lahir', 'jenis_kelamin', 'hub_KRT', 'suku', 'status_pendidikan', 'jenjang_pendidikan', 'bidang_studi', 'pekerjaan', 'gol_darah', 'status_kesehatan', 'waktu_baptis', 'tempat_tgl_baptis', 'tempat_tgl_penguatan', 'status_kawin', 'jabatan_sosial', 'tempat_tinggal', 'lama_tinggal', 'status_gerejawi', 'keterlibatan', 'liber_baptizatorium', 'notum'], 'required'],
-            [['nama'], 'required'],
-            [['id', 'idkk','agama', 'jenis_kelamin', 'hub_KRT', 'status_pendidikan', 'jenjang_pendidikan', 'gol_darah', 'status_kesehatan', 'waktu_baptis', 'status_kawin', 'jabatan_sosial', 'lama_tinggal', 'status_gerejawi', 'keterlibatan', 'notum'], 'integer'],
-            [['nama', 'suku', 'bidang_studi', 'tempat_tgl_lahir', 'pekerjaan', 'tempat_tgl_baptis', 'tempat_tgl_penguatan', 'tempat_tinggal', 'liber_baptizatorium'], 'string', 'max' => 255],
-            [['id'], 'unique'],
+            [['id_keuskupan', 'id_paroki', 'id_wilayah', 'id_lingkungan', 'alamat', 'id_ekonomi', 'id_jenis_rt', 'np', 'id_agama', 'tempat_lahir', 'tgl_lahir', 'jen_kel', 'id_hub_kk', 'id_suku', 'id_pendidikan', 'id_bidstudi', 'id_pekerjaan', 'id_goldar', 'id_sts_sehat', 'id_wkt_baptis', 'id_sts_kawin', 'id_jbt_sosial', 'tmp_tinggal', 'status_komuni', 'id_sts_gerejawi', 'id_keterlibatan'], 'required', 'message' => '{attribute} tidak boleh kosong'],
+            [['tgl_nikah', 'tgl_lahir', 'tgl_upd_sts_sehat', 'tgl_baptis', 'tgl_krisma', 'tahun_mulai_tinggal', 'tgl_update'], 'safe'],
+            [['id_keuskupan', 'status_krisma', 'tmp_tinggal', 'status_komuni'], 'string', 'max' => 3],
+            [['id_paroki'], 'string', 'max' => 5],
+            [['id_wilayah'], 'string', 'max' => 8],
+            [['id_lingkungan'], 'string', 'max' => 11],
+            [['alamat', 'tempat_nikah', 'liber_matrimonium', 'tempat_lahir', 'tempat_baptis', 'tempat_krisma', 'liberbap', 'notum'], 'string', 'max' => 50],
+            [['id_ekonomi', 'id_jenis_rt', 'no_urut', 'id_agama', 'id_hub_kk', 'id_suku', 'id_pendidikan', 'id_bidstudi', 'id_pekerjaan', 'id_goldar', 'id_sts_sehat', 'id_wkt_baptis', 'id_sts_kawin', 'id_jbt_sosial', 'id_sts_gerejawi', 'id_keterlibatan'], 'string', 'max' => 2],
+            [['np'], 'string', 'max' => 14],
+            [['no_ktp'], 'string', 'max' => 16],
+            [['nama_anggota_rt'], 'string', 'max' => 200],
+            [['jen_kel'], 'string', 'max' => 1],
         ];
     }
 
@@ -62,349 +88,348 @@ class Umat extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'idkk' => 'ID Kepala Keluarga',
-            'nama' => 'Nama',
-            'agama' => 'Agama',
-            'tempat_tgl_lahir' => 'Tempat Tanggal Lahir',
-            'jenis_kelamin' => 'Jenis Kelamin',
-            'hub_KRT' => 'Hubungan dengan Kepala Rumah Tangga',
-            'suku' => 'Suku Bangsa',
-            'status_pendidikan' => 'Status Pendidikan',
-            'jenjang_pendidikan' => 'Jenjang Pendidikan',
-            'bidang_studi' => 'Bidang Studi',
-            'pekerjaan' => 'Pekerjaan',
-            'gol_darah' => 'Golongan Darah',
-            'status_kesehatan' => 'Status Kesehatan',
-            'waktu_baptis' => 'Waktu Baptis',
-            'tempat_tgl_baptis' => 'Tempat Tanggal Baptis',
-            'tempat_tgl_penguatan' => 'Tempat Tanggal Penguatan',
-            'status_kawin' => 'Status Kawin',
-            'jabatan_sosial' => 'Jabatan Sosial',
-            'tempat_tinggal' => 'Tempat Tinggal',
-            'lama_tinggal' => 'Lama Tinggal',
-            'status_gerejawi' => 'Status Gerejawi',
-            'keterlibatan' => 'Keterlibatan',
-            'liber_baptizatorium' => 'Liber Baptizatorium',
+            'id_umat' => 'ID Umat',
+            'id_keuskupan' => 'Keuskupan',
+            'id_paroki' => 'Paroki',
+            'id_wilayah' => 'Wilayah',
+            'id_lingkungan' => 'Lingkungan',
+            'alamat' => 'Alamat',
+            'tempat_nikah' => 'Tempat Nikah',
+            'tgl_nikah' => 'Tanggal Nikah',
+            'liber_matrimonium' => 'Liber Matrimonium',
+            'id_ekonomi' => 'Ekonomi',
+            'id_jenis_rt' => 'Jenis RT',
+            'np' => 'Np',
+            'no_urut' => 'No Urut',
+            'no_ktp' => 'No Ktp',
+            'nama_anggota_rt' => 'Nama Anggota RT',
+            'id_agama' => 'Agama',
+            'tempat_lahir' => 'Tempat Lahir',
+            'tgl_lahir' => 'Tanggal Lahir',
+            'jen_kel' => 'Jenis Kelamin',
+            'id_hub_kk' => 'Hubungan Kepala Keluarga',
+            'id_suku' => 'Suku',
+            'id_pendidikan' => 'Pendidikan',
+            'id_bidstudi' => 'Bidang Studi',
+            'id_pekerjaan' => 'Pekerjaan',
+            'id_goldar' => 'Golongan Darah',
+            'id_sts_sehat' => 'Status Sehat',
+            'tgl_upd_sts_sehat' => 'Tanggal Update Status Sehat',
+            'id_wkt_baptis' => 'Waktu Baptis',
+            'tempat_baptis' => 'Tempat Baptis',
+            'tgl_baptis' => 'Tanggal Baptis',
+            'status_krisma' => 'Status Krisma',
+            'tempat_krisma' => 'Tempat Krisma',
+            'tgl_krisma' => 'Tanggal Krisma',
+            'id_sts_kawin' => 'Status Kawin',
+            'id_jbt_sosial' => 'Jabatan Sosial',
+            'tmp_tinggal' => 'Tempat Tinggal',
+            'tahun_mulai_tinggal' => 'Tahun Mulai Tinggal',
+            'status_komuni' => 'Status Komuni',
+            'id_sts_gerejawi' => 'Status Gerejawi',
+            'id_keterlibatan' => 'Keterlibatan',
+            'liberbap' => 'Liber Baptizatorium',
             'notum' => 'Notum',
+            'tgl_update' => 'Tanggal Update',
         ];
     }
 
-    public static function agama($value=NULL, $show=FALSE)
+    public static function getListJenKel($id = Null)
     {
-        $options = [
-            '' => "Pilih",
-            1 => "Islam",
-            2 => "Kristen",
-            3 => "Katolik",
-            4 => "Hindu",
-            5 => "Budha",
-            6 => "Khonghucu",
-            7 => "Lainnya",
-            8 => "Kato -> Non Kato",
-            9 => "Kato -> Kristen",
-            10 => "Katekumen"
-        ];
-
-        if($value===NULL && $show==TRUE){
-            return '';
-        }else if($value===NULL){
-            return $options;
-        }else{
-            return isset($options[$value]) ? $options[$value] : '';
-        }
-    }
-
-    public static function jenis_kelamin($value=NULL, $show=FALSE)
-    {
-        $options = [
-            '' => "Pilih",
+        $list = [
             1 => "Laki - laki",
             2 => "Perempuan",
         ];
 
-        if($value===NULL && $show==TRUE){
-            return '';
-        }else if($value===NULL){
-            return $options;
+        if($id===NULL){
+            return $list;
         }else{
-            return isset($options[$value]) ? $options[$value] : '';
+            return isset($list[$id]) ? $list[$id] : '';
         }
     }
 
-    public static function hub_krt($value=NULL, $show=FALSE)
-    {
-        $options = [
-            '' => "Pilih",
-            1 => "Kepala rumah tangga",
-            2 => "Pasangan",
-            3 => "Anak",
-            4 => "Kakak - adik",
-            5 => "Anak adopsi/ Anak tiri",
-            6 => "Cucu",
-            7 => "Orang tua/Mertua (Single)",
-            8 => "Famili Lain",
-            9 => "Pembantu/Sopir/Tukang kebun",
-            10 => "Lain - lain"
-        ];
+    public static function getListKeuskupan($id = Null){
+        $row = Keuskupan::find()->all();
 
-        if($value===NULL && $show==TRUE){
-            return '';
-        }else if($value===NULL){
-            return $options;
-        }else{
-            return isset($options[$value]) ? $options[$value] : '';
+        $list = [];
+        foreach($row as $i => $value){
+            $list[$value->id_keuskupan] = $value->nama_keuskupan;
         }
-    }    
 
-    public static function status_pendidikan($value=NULL, $show=FALSE)
-    {
-        $options = [
-            '' => 'Pilih', 
-            '1' => 'Tamat', 
-            '2' => 'Sedang di sekolah Katolik', 
-            '3'=> 'Sedang di sekolah Non Katolik'
-        ];
-
-        if($value===NULL && $show==TRUE){
-            return '';
-        }else if($value===NULL){
-            return $options;
+        if($id === NULL){
+            return $list;
         }else{
-            return isset($options[$value]) ? $options[$value] : '';
-        }
-    }    
-
-    public static function jenjang_pendidikan($value=NULL, $status=FALSE, $show=FALSE)
-    {
-        $tamat = [
-            0 => 'Belum sekolah',
-            1 => 'SD',
-            2 => 'SLTP',
-            3 => 'SLTA',
-            4 => 'Diploma (D1/D2/D3)',
-            5 => 'Sarjana (S1/D4)',
-            6 => 'S2/Akta 5',
-            7 => 'S3',
-            33 => 'Usia 7-12 tidak sekolah',
-            44 => 'Usia 13-15 tidak sekolah',
-            77 => 'Buta aksara',
-        ];
-
-        $sekolahKatolik = [
-            11 => 'SD',
-            12 => 'SLTP',
-            13 => 'SLTA',
-            14 => 'Diploma (D1/D2/D3)',
-            15 => 'Sarjana (S1/D4)',
-            16 => 'S2/Akta 5',
-            17 => 'S3',
-        ];
-
-        $sekolahNonKatolik = [
-            21 => 'SD',
-            22 => 'SLTP',
-            23 => 'SLTA',
-            24 => 'Diploma (D1/D2/D3)',
-            25 => 'Sarjana (S1/D4)',
-            26 => 'S2/Akta 5',
-            27 => 'S3',
-        ];
-
-        if($value===NULL && $show==TRUE){
-            return '';
-        }else if($status){
-            $options = array_merge([''=>'Pilih'], $tamat, $sekolahKatolik, $sekolahNonKatolik);
-            return isset($options[$value]) ? $options[$value] : '';
-        }else{
-            if($value==1){
-                $option = $tamat;
-            }else if($value==2){
-                $option = $sekolahKatolik;
-            }else if($value==3){
-                $option = $sekolahNonKatolik;
-            }else{
-                $option = [''=>'Pilih'];
-            }
-
-            return $option;
+            return isset($list[$id]) ? $list[$id] : '';
         }
     }
 
-    public static function gol_darah($value=NULL, $show=FALSE)
-    {
-        $options = [
-            '' => "Pilih",
-            1 => "A",
-            2 => "B",
-            3 => "O",
-            4 => "AB",
-            8 => "Tidak tahu",           
-        ];
+    public static function getListParoki($id = Null){
+        $row = Paroki::find()->all();
 
-        if($value===NULL && $show==TRUE){
-            return '';
-        }else if($value===NULL){
-            return $options;
-        }else{
-            return isset($options[$value]) ? $options[$value] : '';
+        $list = [];
+        foreach($row as $i => $value){
+            $list[$value->id_paroki] = $value->nama_paroki;
         }
-    }    
 
-    public static function status_kesehatan($value=NULL, $show=FALSE)
-    {
-        $options = [
-            '' => "Pilih",
-            0 => "Normal",
-            1 => "Cacat fisik",
-            2 => "Buta",
-            4 => "Bisu/Tuli",
-            8 => "Sulit mengurus diri sendiri",
-            16 => "Kesulitan mengingat",
-            32 => "Penyakit kronis",
-            55 => "Pikun",
-        ];
- 
-        if($value===NULL && $show==TRUE){
-            return '';
-        }else if($value===NULL){
-            return $options;
+        if($id === NULL){
+            return $list;
         }else{
-            return isset($options[$value]) ? $options[$value] : '';
+            return isset($list[$id]) ? $list[$id] : '';
         }
-    }    
-         
-    public static function waktu_baptis($value=NULL, $show=FALSE)
-    {
-        $options = [
-            '' => "Pilih",
-            1 => "Usia 0-7 th",
-            2 => "Usia 8-18 th",
-            3 => "Dewasa dari Islam",
-            4 => "Dewasa dari Hindu",
-            5 => "Dewasa dari Budha",
-            6 => "Dewasa dari Kristen",
-            7 => "Dewasa dari Khonghucu",
-            8 => "Dewasa dari lain-lain",
-            9 => "Belum Baptis (bayi, anak dewasa)",
-            10 => "Katekumen",
-        ];
- 
-        if($value===NULL && $show==TRUE){
-            return '';
-        }else if($value===NULL){
-            return $options;
+    }
+
+    public static function getListWilayah($id = Null){
+        $row = wilayah::find()->all();
+
+        $list = [];
+        foreach($row as $i => $value){
+            $list[$value->id_wilayah] = $value->nama_wilayah;
+        }
+
+        if($id === NULL){
+            return $list;
         }else{
-            return isset($options[$value]) ? $options[$value] : '';
+            return isset($list[$id]) ? $list[$id] : '';
         }
-    }               
+    }
 
-    public static function status_kawin($value=NULL, $show=FALSE)
-    {
-        $options = [
-            '' => "Pilih",
-            1 => "Belum nikah",
-            2 => "Sah katolik",
-            3 => "Sah beda agama",
-            4 => "Sah beda gereja",
-            5 => "Nikah di luar gereja",
-            6 => "Ditinggal pasangan",
-            7 => "Krisis berkepanjangan",
-            8 => "Janda/Duda mati",
-            9 => "Rm/Br/Sr dari Paroki",
-            10 => "Rm/Br/Sr bekerja di Paroki",
-            11 => "Hidup bersama tanpa ikatan",
-            12 => "Nikah adat",
-        ];
- 
-        if($value===NULL && $show==TRUE){
-            return '';
-        }else if($value===NULL){
-            return $options;
+    public static function getListLingkungan($id = Null){
+        $row = Lingkungan::find()->all();
+
+        $list = [];
+        foreach($row as $i => $value){
+            $list[$value->id_lingkungan] = $value->nama_lingkungan;
+        }
+
+        if($id === NULL){
+            return $list;
         }else{
-            return isset($options[$value]) ? $options[$value] : '';
+            return isset($list[$id]) ? $list[$id] : '';
         }
-    }               
+    }
 
-    public static function jabatan_sosial($value=NULL, $show=FALSE)
-    {
-        $options = [
-            '' => "Pilih",
-            1 => "RT/RW/Kelurahan",
-            2 => "Pengurus LSM",
-            3 => "Pengurus Ormas/Partai Politik",
-            4 => "Warga biasa",
-        ];
- 
-        if($value===NULL && $show==TRUE){
-            return '';
-        }else if($value===NULL){
-            return $options;
+    public static function getListEkonomi($id = Null){
+        $row = Ekonomi::find()->all();
+
+        $list = [];
+        foreach($row as $i => $value){
+            $list[$value->id_ekonomi] = $value->kriteria_ekonomi;
+        }
+
+        if($id === NULL){
+            return $list;
         }else{
-            return isset($options[$value]) ? $options[$value] : '';
+            return isset($list[$id]) ? $list[$id] : '';
         }
-    }               
+    }
 
-    public static function status_gerejawi($value=NULL, $show=FALSE)
-    {
-        $options = [
-            '' => "Pilih",
-            1 => "Misa di gereja setempat, aktif di lingkungan",
-            2 => "Misa di gereja setempat, aktif di paroki lain",
-            3 => "Misa di gereja setempat, tidak aktif di lingkungan",
-            4 => "Misa & aktif di gereja/paroki lain",
-            5 => "Misa di luar gereja setempat, aktif di lingkungan/paroki",
-            6 => "Kadang - kadang Misa/Ekaristi",
-            7 => "Tidak aktif",
-        ];
- 
-        if($value===NULL && $show==TRUE){
-            return '';
-        }else if($value===NULL){
-            return $options;
+    public static function getListJenisRt($id = Null){
+        $row = JenisRt::find()->all();
+
+        $list = [];
+        foreach($row as $i => $value){
+            $list[$value->id_jenis_rt] = $value->kriteria_rt;
+        }
+
+        if($id === NULL){
+            return $list;
         }else{
-            return isset($options[$value]) ? $options[$value] : '';
+            return isset($list[$id]) ? $list[$id] : '';
         }
-    }               
+    }
 
-    public static function keterlibatan($value=NULL, $show=FALSE)
-    {
-        $options = [
-            '' => "Pilih",
-            1 => "Anggota dewan paroki",
-            2 => "Pengurus tim kerja",
-            3 => "Pengurus lingkungan",
-            4 => "Pengurus kelompok kategorial",
-            5 => "Pengurus ormas Katolik",
-            6 => "Warga umat biasa",
-        ];
- 
-        if($value===NULL && $show==TRUE){
-            return '';
-        }else if($value===NULL){
-            return $options;
+    public static function getListAgama($id = Null){
+        $row = Agama::find()->all();
+
+        $list = [];
+        foreach($row as $i => $value){
+            $list[$value->id_agama] = $value->nama_agama;
+        }
+
+        if($id === NULL){
+            return $list;
         }else{
-            return isset($options[$value]) ? $options[$value] : '';
+            return isset($list[$id]) ? $list[$id] : '';
         }
-    }               
+    }
 
-    public static function notum($value=NULL, $show=FALSE)
-    {
-        $options = [
-            '' => "Pilih",
-            1 => "NA : Nikah adat",
-            2 => "KB : Keluarga perlu mendapat perhatian khusus",
-        ];
- 
+    public static function getListHubKk($id = Null){
+        $row = HubunganKk::find()->all();
 
-        if($value===NULL && $show==TRUE){
-            return '';
-        }else if($value===NULL){
-            return $options;
+        $list = [];
+        foreach($row as $i => $value){
+            $list[$value->id_hub_kk] = $value->deskripsi_hub_kk;
+        }
+
+        if($id === NULL){
+            return $list;
         }else{
-            return isset($options[$value]) ? $options[$value] : '';
+            return isset($list[$id]) ? $list[$id] : '';
         }
-    }               
+    }
 
+    public static function getListSuku($id = Null){
+        $row = SukuBangsa::find()->all();
 
+        $list = [];
+        foreach($row as $i => $value){
+            $list[$value->id_suku] = $value->deskripsi_suku;
+        }
+
+        if($id === NULL){
+            return $list;
+        }else{
+            return isset($list[$id]) ? $list[$id] : '';
+        }
+    }
+
+    public static function getListPendidikan($id = Null){
+        $row = Pendidikan::find()->all();
+
+        $list = [];
+        foreach($row as $i => $value){
+            $list[$value->id_pendidikan] = $value->deskripsi_pendidikan;
+        }
+
+        if($id === NULL){
+            return $list;
+        }else{
+            return isset($list[$id]) ? $list[$id] : '';
+        }
+    }
+
+    public static function getListBidStudi($id = Null){
+        $row = BidangStudi::find()->all();
+
+        $list = [];
+        foreach($row as $i => $value){
+            $list[$value->id_bidstudi] = $value->deskripsi_bidstudi;
+        }
+
+        if($id === NULL){
+            return $list;
+        }else{
+            return isset($list[$id]) ? $list[$id] : '';
+        }
+    }
+
+    public static function getListPekerjaan($id = Null){
+        $row = Pekerjaan::find()->all();
+
+        $list = [];
+        foreach($row as $i => $value){
+            $list[$value->id_pekerjaan] = $value->deskripsi_pekerjaan;
+        }
+
+        if($id === NULL){
+            return $list;
+        }else{
+            return isset($list[$id]) ? $list[$id] : '';
+        }
+    }
+
+    public static function getListGolDar($id = Null){
+        $row = GolonganDarah::find()->all();
+
+        $list = [];
+        foreach($row as $i => $value){
+            $list[$value->id_goldar] = $value->deskripsi_goldar;
+        }
+
+        if($id === NULL){
+            return $list;
+        }else{
+            return isset($list[$id]) ? $list[$id] : '';
+        }
+    }
+
+    public static function getListStsSehat($id = Null){
+        $row = StatusKesehatan::find()->all();
+
+        $list = [];
+        foreach($row as $i => $value){
+            $list[$value->id_sts_sehat] = $value->deskripsi_sts_sehat;
+        }
+
+        if($id === NULL){
+            return $list;
+        }else{
+            return isset($list[$id]) ? $list[$id] : '';
+        }
+    }
+
+    public static function getListWktBaptis($id = Null){
+        $row = WaktuBaptis::find()->all();
+
+        $list = [];
+        foreach($row as $i => $value){
+            $list[$value->id_wkt_baptis] = $value->deskripsi_wkt_baptis;
+        }
+
+        if($id === NULL){
+            return $list;
+        }else{
+            return isset($list[$id]) ? $list[$id] : '';
+        }
+    }
+
+    public static function getListStsKawin($id = Null){
+        $row = StatusPerkawinan::find()->all();
+
+        $list = [];
+        foreach($row as $i => $value){
+            $list[$value->id_sts_kawin] = $value->deskripsi_sts_kawin;
+        }
+
+        if($id === NULL){
+            return $list;
+        }else{
+            return isset($list[$id]) ? $list[$id] : '';
+        }
+    }
+
+    public static function getListJbtSosial($id = Null){
+        $row = JabatanSosial::find()->all();
+
+        $list = [];
+        foreach($row as $i => $value){
+            $list[$value->id_jbt_sosial] = $value->deskripsi_jbt_sosial;
+        }
+
+        if($id === NULL){
+            return $list;
+        }else{
+            return isset($list[$id]) ? $list[$id] : '';
+        }
+    }
+
+    public static function getListStsGerejawi($id = Null){
+        $row = StatusGerejawi::find()->all();
+
+        $list = [];
+        foreach($row as $i => $value){
+            $list[$value->id_sts_gerejawi] = $value->deskripsi_sts_gerejawi;
+        }
+
+        if($id === NULL){
+            return $list;
+        }else{
+            return isset($list[$id]) ? $list[$id] : '';
+        }
+    }
+
+    public static function getListKeterlibatan($id = Null){
+        $row = Keterlibatan::find()->all();
+
+        $list = [];
+        foreach($row as $i => $value){
+            $list[$value->id_keterlibatan] = $value->deskripsi_keterlibatan;
+        }
+
+        if($id === NULL){
+            return $list;
+        }else{
+            return isset($list[$id]) ? $list[$id] : '';
+        }
+    }
 }

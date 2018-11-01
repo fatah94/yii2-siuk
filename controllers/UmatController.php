@@ -5,14 +5,14 @@ namespace app\controllers;
 use Yii;
 use app\models\Umat;
 use app\models\UmatSearch;
-use app\controllers\ControllerHelper;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * UmatController implements the CRUD actions for Umat model.
  */
-class UmatController extends ControllerHelper
+class UmatController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -56,7 +56,7 @@ class UmatController extends ControllerHelper
 
         return $this->render('view', [
             'model' => $model,
-            'datakk' => $this->getKepalaKeluarga($model['id'], $model['idkk']),
+            'datakk' => $this->getKepalaKeluarga($model['id_umat'], $model['id_keluarga']),
         ]);
     }
 
@@ -66,7 +66,7 @@ class UmatController extends ControllerHelper
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $id);
 
         return $this->render('viewkk', [
-            'nama_kk' => $this->findModel($id)['nama'],
+            'nama_kk' => $this->findModel($id)['nama_anggota_rt'],
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -84,12 +84,12 @@ class UmatController extends ControllerHelper
             $model->load(Yii::$app->request->post());
 
             if(isset($_GET['id'])){
-                $model->idkk = (int)$_GET['id'];
+                $model->id_keluarga = (int)$_GET['id'];
             }
     
             if ($model->save()) {
-                $idkk = ($model->idkk==0) ? $model->id : $model->idkk;
-                return $this->redirect(['viewkk', 'id' => $idkk]);
+                $idkk = ($model->id_keluarga==0) ? $model->id_umat : $model->id_keluarga;
+                return $this->redirect(['viewkk', 'id' => $id_keluarga]);
             }
         }
 
@@ -116,7 +116,7 @@ class UmatController extends ControllerHelper
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->id_umat]);
         }
 
         return $this->render('update', [
@@ -138,10 +138,9 @@ class UmatController extends ControllerHelper
         return $this->redirect(['index']);
     }
 
-
     public function actionDeletekk($id)
     {
-        $models = Umat::find()->where("id=$id")->orWhere("idkk=$id")->all();
+        $models = Umat::find()->where(['id_umat' => $id])->orWhere(['id_keluarga'=> $id])->all();
 
         foreach ($models as $model) {
             $model->delete();
@@ -165,17 +164,9 @@ class UmatController extends ControllerHelper
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    protected function getKepalaKeluarga($id, $idkk)
+    protected function getKepalaKeluarga($id_umat, $id_keluarga)
     {
-        $searchid = ($idkk==0) ? $id : $idkk;
+        $searchid = ($id_keluarga==0) ? $id_umat : $id_keluarga;
         return $this->findModel($searchid);
-    }
-
-    public function actionGetjenjangpendidikan()
-    {
-        if(Yii::$app->request->isPost){
-            $result = Umat::jenjang_pendidikan($_POST['id']);
-            return json_encode($result);            
-        }
     }
 }

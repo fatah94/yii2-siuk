@@ -18,8 +18,8 @@ class UmatSearch extends Umat
     public function rules()
     {
         return [
-            [['id', 'agama', 'jenis_kelamin', 'hub_KRT', 'suku', 'status_pendidikan', 'jenjang_pendidikan', 'bidang_studi', 'gol_darah', 'status_kesehatan', 'waktu_baptis', 'status_kawin', 'jabatan_sosial', 'lama_tinggal', 'status_gerejawi', 'keterlibatan', 'liber_baptizatorium', 'notum'], 'integer'],
-            [['nama', 'tempat_tgl_lahir', 'pekerjaan', 'tempat_tgl_baptis', 'tempat_tgl_penguatan', 'tempat_tinggal'], 'safe'],
+            [['id_umat'], 'integer'],
+            [['id_keuskupan', 'id_paroki', 'id_wilayah', 'id_lingkungan', 'alamat', 'tempat_nikah', 'tgl_nikah', 'liber_matrimonium', 'id_ekonomi', 'id_jenis_rt', 'np', 'no_urut', 'no_ktp', 'nama_anggota_rt', 'id_agama', 'tempat_lahir', 'tgl_lahir', 'jen_kel', 'id_hub_kk', 'id_suku', 'id_pendidikan', 'id_bidstudi', 'id_pekerjaan', 'id_goldar', 'id_sts_sehat', 'tgl_upd_sts_sehat', 'id_wkt_baptis', 'tempat_baptis', 'tgl_baptis', 'status_krisma', 'tempat_krisma', 'tgl_krisma', 'id_sts_kawin', 'id_jbt_sosial', 'tmp_tinggal', 'tahun_mulai_tinggal', 'status_komuni', 'id_sts_gerejawi', 'id_keterlibatan', 'liberbap', 'notum', 'tgl_update'], 'safe'],
         ];
     }
 
@@ -39,7 +39,7 @@ class UmatSearch extends Umat
      *
      * @return ActiveDataProvider
      */
-    public function search($params,$id=NULL)
+    public function search($params, $id=NULL, $attr=Null)
     {
         $query = Umat::find();
 
@@ -59,39 +59,62 @@ class UmatSearch extends Umat
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
-            'agama' => $this->agama,
-            'jenis_kelamin' => $this->jenis_kelamin,
-            'hub_KRT' => $this->hub_KRT,
-            'suku' => $this->suku,
-            'status_pendidikan' => $this->status_pendidikan,
-            'jenjang_pendidikan' => $this->jenjang_pendidikan,
-            'bidang_studi' => $this->bidang_studi,
-            'gol_darah' => $this->gol_darah,
-            'status_kesehatan' => $this->status_kesehatan,
-            'waktu_baptis' => $this->waktu_baptis,
-            'status_kawin' => $this->status_kawin,
-            'jabatan_sosial' => $this->jabatan_sosial,
-            'lama_tinggal' => $this->lama_tinggal,
-            'status_gerejawi' => $this->status_gerejawi,
-            'keterlibatan' => $this->keterlibatan,
-            'liber_baptizatorium' => $this->liber_baptizatorium,
-            'notum' => $this->notum,
+            'id_umat' => $this->id_umat,
+            'tgl_nikah' => $this->tgl_nikah,
+            'tgl_lahir' => $this->tgl_lahir,
+            'tgl_upd_sts_sehat' => $this->tgl_upd_sts_sehat,
+            'tgl_baptis' => $this->tgl_baptis,
+            'tgl_krisma' => $this->tgl_krisma,
+            'tahun_mulai_tinggal' => $this->tahun_mulai_tinggal,
+            'tgl_update' => $this->tgl_update,
         ]);
 
-        $query->andFilterWhere(['like', 'nama', $this->nama])
-            ->andFilterWhere(['like', 'tempat_tgl_lahir', $this->tempat_tgl_lahir])
-            ->andFilterWhere(['like', 'pekerjaan', $this->pekerjaan])
-            ->andFilterWhere(['like', 'tempat_tgl_baptis', $this->tempat_tgl_baptis])
-            ->andFilterWhere(['like', 'tempat_tgl_penguatan', $this->tempat_tgl_penguatan])
-            ->andFilterWhere(['like', 'tempat_tinggal', $this->tempat_tinggal]);
+        $query->andFilterWhere(['like', 'id_keuskupan', $this->id_keuskupan])
+            ->andFilterWhere(['like', 'id_paroki', $this->id_paroki])
+            ->andFilterWhere(['like', 'id_wilayah', $this->id_wilayah])
+            ->andFilterWhere(['like', 'id_lingkungan', $this->id_lingkungan])
+            ->andFilterWhere(['like', 'alamat', $this->alamat])
+            ->andFilterWhere(['like', 'tempat_nikah', $this->tempat_nikah])
+            ->andFilterWhere(['like', 'liber_matrimonium', $this->liber_matrimonium])
+            ->andFilterWhere(['like', 'id_ekonomi', $this->id_ekonomi])
+            ->andFilterWhere(['like', 'id_jenis_rt', $this->id_jenis_rt])
+            ->andFilterWhere(['like', 'np', $this->np])
+            ->andFilterWhere(['like', 'no_urut', $this->no_urut])
+            ->andFilterWhere(['like', 'no_ktp', $this->no_ktp])
+            ->andFilterWhere(['like', 'nama_anggota_rt', $this->nama_anggota_rt])
+            ->andFilterWhere(['like', 'id_agama', $this->id_agama])
+            ->andFilterWhere(['like', 'tempat_lahir', $this->tempat_lahir])
+            ->andFilterWhere(['like', 'jen_kel', $this->jen_kel])
+            ->andFilterWhere(['like', 'id_hub_kk', $this->id_hub_kk])
+            ->andFilterWhere(['like', 'id_suku', $this->id_suku])
+            ->andFilterWhere(['like', 'id_pendidikan', $this->id_pendidikan])
+            ->andFilterWhere(['like', 'id_bidstudi', $this->id_bidstudi])
+            ->andFilterWhere(['like', 'id_pekerjaan', $this->id_pekerjaan])
+            ->andFilterWhere(['like', 'id_goldar', $this->id_goldar])
+            ->andFilterWhere(['like', 'id_sts_sehat', $this->id_sts_sehat])
+            ->andFilterWhere(['like', 'id_wkt_baptis', $this->id_wkt_baptis])
+            ->andFilterWhere(['like', 'tempat_baptis', $this->tempat_baptis])
+            ->andFilterWhere(['like', 'status_krisma', $this->status_krisma])
+            ->andFilterWhere(['like', 'tempat_krisma', $this->tempat_krisma])
+            ->andFilterWhere(['like', 'id_sts_kawin', $this->id_sts_kawin])
+            ->andFilterWhere(['like', 'id_jbt_sosial', $this->id_jbt_sosial])
+            ->andFilterWhere(['like', 'tmp_tinggal', $this->tmp_tinggal])
+            ->andFilterWhere(['like', 'status_komuni', $this->status_komuni])
+            ->andFilterWhere(['like', 'id_sts_gerejawi', $this->id_sts_gerejawi])
+            ->andFilterWhere(['like', 'id_keterlibatan', $this->id_keterlibatan])
+            ->andFilterWhere(['like', 'liberbap', $this->liberbap])
+            ->andFilterWhere(['like', 'notum', $this->notum]);
 
-        if($id == NULL){
-            $query->andWhere("hub_KRT = 1");
-        }else{
-            $query->orWhere("id = $id")
-                ->orWhere("idkk = $id");
-        }
+            if($id == NULL){
+                $query->andWhere("id_hub_kk = 01");
+            }else{
+                $query->orWhere(['id_umat' => $id])
+                    ->orWhere(['id_keluarga' => $id]);
+            }    
+
+            if($attr != NULL){
+                $query->andWhere($attr);
+            }    
 
         return $dataProvider;
     }

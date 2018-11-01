@@ -2,62 +2,83 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\UmatSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-// echo'<pre>';print_r($model::jenis_kelamin());die;
-$this->title = 'Data Umat';
+$this->title = 'Umats';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="umat-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php Pjax::begin(); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?php echo Html::a('Input Data', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Umat', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        // 'filterModel' => $searchModel,
+        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            // 'id',
-            'nama',
+            // 'id_umat',
+            // 'id_keuskupan',
+            // 'id_paroki',
+            // 'id_wilayah',
+            // 'id_lingkungan',
+            //'alamat',
+            //'tempat_nikah',
+            //'tgl_nikah',
+            //'liber_matrimonium',
+            //'id_ekonomi',
+            //'id_jenis_rt',
+            //'np',
+            //'no_urut',
+            //'no_ktp',
+            'nama_anggota_rt',
             [
-                'attribute' => 'agama',
+                'attribute' => 'id_agama',
                 'value' => function ($data) {
-                    return $data::agama($data->agama, TRUE);
+                    return $data::getListAgama($data->id_agama, TRUE);
                 },
             ],
-            'tempat_tgl_lahir',
+            //'tempat_lahir',
+            //'tgl_lahir',
             [
-                'attribute' => 'jenis_kelamin',
+                'attribute' => 'jen_kel',
                 'value' => function ($data) {
-                    return $data::jenis_kelamin($data->jenis_kelamin, TRUE);
+                    return $data::getListJenKel($data->jen_kel, TRUE);
                 },
             ],
-            // 'hub_KRT',
-            //'suku',
-            //'pendidikan',
-            //'bidang_studi',
-            //'pekerjaan',
-            //'gol_darah',
-            //'status_kesehatan',
-            //'waktu_baptis',
-            //'tempat_tgl_baptis',
-            //'tempat_tgl_penguatan',
-            //'status_kawin',
-            //'jabatan_sosial',
-            //'tempat_tinggal',
-            //'lama_tinggal',
-            //'status_gerejawi',
-            //'keterlibatan',
-            //'liber_baptizatorium',
+            //'id_hub_kk',
+            //'id_suku',
+            //'id_pendidikan',
+            //'id_bidstudi',
+            //'id_pekerjaan',
+            //'id_goldar',
+            //'id_sts_sehat',
+            //'tgl_upd_sts_sehat',
+            //'id_wkt_baptis',
+            //'tempat_baptis',
+            //'tgl_baptis',
+            //'status_krisma',
+            //'tempat_krisma',
+            //'tgl_krisma',
+            //'id_sts_kawin',
+            //'id_jbt_sosial',
+            //'tmp_tinggal',
+            //'tahun_mulai_tinggal',
+            //'status_komuni',
+            //'id_sts_gerejawi',
+            //'id_keterlibatan',
+            //'liberbap',
             //'notum',
+            //'tgl_update',
+
             // ['class' => 'yii\grid\ActionColumn'],
             [
                 'class' => 'yii\grid\ActionColumn',
@@ -83,10 +104,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
                 'urlCreator' => function ($action, $model, $key, $index) {
                     if ($action === 'view') {
-                        $url ='viewkk?id='.$model->id;
+                        $url ='viewkk?id='.$model->id_umat;
                         return $url;
                     }else if ($action === 'delete') {
-                        $url ='deletekk?id='.$model->id;
+                        $url ='deletekk?id='.$model->id_umat;
                         return $url;
                     }
 
@@ -94,4 +115,5 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]); ?>
+    <?php Pjax::end(); ?>
 </div>

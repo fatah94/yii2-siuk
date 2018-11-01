@@ -8,10 +8,6 @@ use yii\helpers\Html;
 
 $this->title = 'Create Umat';
 $this->params['breadcrumbs'][] = ['label' => 'Data Umat', 'url' => ['index']];
-if(isset($_GET['id'])){
-	$this->params['breadcrumbs'][] = ['label' => 'Keluarga '.$datakk['nama'], 'url' => ['viewkk?id='.$datakk['id']]];
-	// $this->params['breadcrumbs'][] = ['label' => 'Keluarga Umat', 'url' => ['index']];
-}
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="umat-create">

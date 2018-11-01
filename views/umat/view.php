@@ -6,22 +6,21 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Umat */
 
-$this->title = $model->nama;
+$this->title = $model->id_umat;
 $this->params['breadcrumbs'][] = ['label' => 'Data Umat', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => 'Keluarga '.$datakk['nama'], 'url' => ['viewkk', 'id' => $datakk['id']]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
 <div class="umat-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Perbarui', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Hapus', ['delete', 'id' => $model->id], [
+        <?= Html::a('Update', ['update', 'id' => $model->id_umat], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id_umat], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this data?',
+                'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -30,69 +29,108 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'nama',
             [
-                'attribute' => 'agama',
-                'value' => $model::agama($model->agama, TRUE),
-            ],
-            'tempat_tgl_lahir',
-            [
-                'attribute' => 'jenis_kelamin',
-                'value' => $model::jenis_kelamin($model->jenis_kelamin, TRUE),
+                'attribute' => 'id_keuskupan',
+                'value' => $model::getListKeuskupan($model->id_keuskupan),
             ],
             [
-                'attribute' => 'hub_KRT',
-                'value' => $model::hub_krt($model->hub_KRT, TRUE),
-            ],
-            'suku',
-            [
-                'attribute' => 'status_pendidikan',
-                'value' => $model::status_pendidikan($model->status_pendidikan, TRUE),
+                'attribute' => 'id_paroki',
+                'value' => $model::getListParoki($model->id_paroki),
             ],
             [
-                'attribute' => 'jenjang_pendidikan',
-                'value' => $model::jenjang_pendidikan($model->jenjang_pendidikan, TRUE, TRUE),
-            ],
-            'bidang_studi',
-            'pekerjaan',
-            [
-                'attribute' => 'gol_darah',
-                'value' => $model::gol_darah($model->gol_darah, TRUE),
+                'attribute' => 'id_wilayah',
+                'value' => $model::getListWilayah($model->id_wilayah),
             ],
             [
-                'attribute' => 'status_kesehatan',
-                'value' => $model::status_kesehatan($model->status_kesehatan, TRUE),
+                'attribute' => 'id_lingkungan',
+                'value' => $model::getListLingkungan($model->id_lingkungan),
+            ],
+            'alamat',
+            'tempat_nikah',
+            'tgl_nikah',
+            'liber_matrimonium',
+            [
+                'attribute' => 'id_ekonomi',
+                'value' => $model::getListEkonomi($model->id_ekonomi),
             ],
             [
-                'attribute' => 'waktu_baptis',
-                'value' => $model::waktu_baptis($model->waktu_baptis, TRUE),
+                'attribute' => 'id_jenis_rt',
+                'value' => $model::getListJenisRt($model->id_jenis_rt),
             ],
-            'tempat_tgl_baptis',
-            'tempat_tgl_penguatan',
+            'np',
+            'no_urut',
+            'no_ktp',
+            'nama_anggota_rt',
             [
-                'attribute' => 'status_kawin',
-                'value' => $model::status_kawin($model->status_kawin, TRUE),
+                'attribute' => 'id_agama',
+                'value' => $model::getListAgama($model->id_agama),
             ],
+            'tempat_lahir',
+            'tgl_lahir',
             [
-                'attribute' => 'jabatan_sosial',
-                'value' => $model::jabatan_sosial($model->jabatan_sosial, TRUE),
-            ],
-            'tempat_tinggal',
-            'lama_tinggal',
-            [
-                'attribute' => 'status_gerejawi',
-                'value' => $model::status_gerejawi($model->status_gerejawi, TRUE),
+                'attribute' => 'jen_kel',
+                'value' => $model::getListJenKel($model->jen_kel),
             ],
             [
-                'attribute' => 'keterlibatan',
-                'value' => $model::keterlibatan($model->keterlibatan, TRUE),
+                'attribute' => 'id_hub_kk',
+                'value' => $model::getListHubKk($model->id_hub_kk),
             ],
-
-            'liber_baptizatorium',
             [
-                'attribute' => 'notum',
-                'value' => $model::notum($model->notum, TRUE),
+                'attribute' => 'id_suku',
+                'value' => $model::getListSuku($model->id_suku),
             ],
+            [
+                'attribute' => 'id_pendidikan',
+                'value' => $model::getListPendidikan($model->id_pendidikan),
+            ],
+            [
+                'attribute' => 'id_bidstudi',
+                'value' => $model::getListBidStudi($model->id_bidstudi),
+            ],
+            [
+                'attribute' => 'id_pekerjaan',
+                'value' => $model::getListPekerjaan($model->id_pekerjaan),
+            ],
+            [
+                'attribute' => 'id_goldar',
+                'value' => $model::getListGolDar($model->id_goldar),
+            ],
+            [
+                'attribute' => 'id_sts_sehat',
+                'value' => $model::getListStsSehat($model->id_sts_sehat),
+            ],
+            'tgl_upd_sts_sehat',
+            [
+                'attribute' => 'id_wkt_baptis',
+                'value' => $model::getListWktBaptis($model->id_wkt_baptis),
+            ],
+            'tempat_baptis',
+            'tgl_baptis',
+            'status_krisma',
+            'tempat_krisma',
+            'tgl_krisma',
+            [
+                'attribute' => 'id_sts_kawin',
+                'value' => $model::getListStsKawin($model->id_sts_kawin),
+            ],
+            [
+                'attribute' => 'id_jbt_sosial',
+                'value' => $model::getListJbtSosial($model->id_jbt_sosial),
+            ],
+            'tmp_tinggal',
+            'tahun_mulai_tinggal',
+            'status_komuni',
+            [
+                'attribute' => 'id_sts_gerejawi',
+                'value' => $model::getListStsGerejawi($model->id_sts_gerejawi),
+            ],
+            [
+                'attribute' => 'id_keterlibatan',
+                'value' => $model::getListKeterlibatan($model->id_keterlibatan),
+            ],
+            'liberbap',
+            'notum',
+            'tgl_update',
         ],
     ]) ?>
 
