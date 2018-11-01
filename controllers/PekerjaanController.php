@@ -65,6 +65,7 @@ class PekerjaanController extends Controller
     public function actionCreate()
     {
         $model = new Pekerjaan();
+        $model->id_pekerjaan = $model::getNextId();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_pekerjaan]);

@@ -12,11 +12,8 @@ use Yii;
  */
 class SukuBangsa extends \yii\db\ActiveRecord
 {
-    public function beforeSave($insert) {
-        if ($insert) {
-            $this->id_suku = DBHelper::getNextId(self::tableName(), 'id_suku', 2);
-        }
-        return parent::beforeSave($insert);
+    public static function getNextId() {
+        return DBHelper::getNextId(self::tableName(), 'id_suku', 2);
     }
     /**
      * {@inheritdoc}

@@ -44,4 +44,19 @@ class Boys extends \yii\db\ActiveRecord
             'toy_id' => 'Toy ID',
         ];
     }
+
+    public static function getListToys($id = Null){
+        $row = Toys::find()->all();
+
+        $list = [];
+        foreach($row as $i => $value){
+            $list[$value->toy_id] = $value->toy;
+        }
+
+        if($id === NULL){
+            return $list;
+        }else{
+            return isset($list[$id]) ? $list[$id] : '';
+        }
+    }
 }

@@ -65,6 +65,7 @@ class KeterlibatanController extends Controller
     public function actionCreate()
     {
         $model = new Keterlibatan();
+        $model->id_keterlibatan = $model::getNextId();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_keterlibatan]);

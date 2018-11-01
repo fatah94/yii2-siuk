@@ -128,7 +128,7 @@ use nex\datepicker\DatePicker;
 
     <?= $form->field($model, 'tmp_tinggal')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'tahun_mulai_tinggal')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'tahun_mulai_tinggal')->textInput(['maxlength' => 4, 'minlength' => 4, 'type' => 'number']) ?>
 
     <?= $form->field($model, 'status_komuni')->textInput(['maxlength' => true]) ?>
 

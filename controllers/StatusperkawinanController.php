@@ -65,6 +65,7 @@ class StatusperkawinanController extends Controller
     public function actionCreate()
     {
         $model = new StatusPerkawinan();
+        $model->id_sts_kawin = $model::getNextId();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_sts_kawin]);

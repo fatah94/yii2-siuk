@@ -27,10 +27,22 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             // 'id_lingkungan',
-            'nama_lingkungan',
+            [
+                'attribute' => 'nama_lingkungan',
+                'value' => function ($model, $key, $index, $column) {
+                    return Html::a($model->nama_lingkungan, ['/lingkungan/viewumat', 'id'=> $model->id_wilayah], 
+                    ['title' => 'Lihat Data Umat Di ' . $model->nama_lingkungan,]);
+                },
+                'format' => 'raw'
+            ],
             'lingk_pengurus',
             'lingk_kontak',
-            'id_wilayah',
+            [
+                'attribute' => 'id_wilayah',
+                'value' => function ($data) {
+                    return $data::getListWilayah($data->id_wilayah, TRUE);
+                },
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

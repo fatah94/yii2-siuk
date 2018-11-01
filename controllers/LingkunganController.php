@@ -54,11 +54,15 @@ class LingkunganController extends Controller
      */
     public function actionView($id)
     {
-        // return $this->render('view', [
-        //     'model' => $this->findModel($id),
-        // ]);
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    public function actionViewumat($id)
+    {
         $searchModel = new UmatSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,null,['id_lingkungan' => $id]);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('viewumat', [
             'nama_lingkungan' => $this->findModel($id)['nama_lingkungan'],
@@ -131,7 +135,7 @@ class LingkunganController extends Controller
         if (($model = Lingkungan::findOne($id)) !== null) {
             return $model;
         }
-
-        throw new NotFoundHttpException('The requested page does not exist.');
+        return null;
+        // throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

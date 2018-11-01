@@ -12,11 +12,8 @@ use Yii;
  */
 class BidangStudi extends \yii\db\ActiveRecord
 {
-    public function beforeSave($insert) {
-        if ($insert) {
-            $this->id_bidstudi = DBHelper::getNextId(self::tableName(), 'id_bidstudi', 2);
-        }
-        return parent::beforeSave($insert);
+    public static function getNextId() {
+        return DBHelper::getNextId(self::tableName(), 'id_bidstudi', 2);
     }
 
     /**

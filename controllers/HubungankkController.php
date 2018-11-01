@@ -65,6 +65,7 @@ class HubungankkController extends Controller
     public function actionCreate()
     {
         $model = new HubunganKk();
+        $model->id_hub_kk = $model::getNextId();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_hub_kk]);

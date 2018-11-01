@@ -65,6 +65,7 @@ class GolongandarahController extends Controller
     public function actionCreate()
     {
         $model = new GolonganDarah();
+        $model->id_goldar = $model::getNextId();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_goldar]);

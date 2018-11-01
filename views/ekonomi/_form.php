@@ -12,8 +12,6 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_ekonomi')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'kriteria_ekonomi')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'deskripsi_ekonomi')->textInput(['maxlength' => true]) ?>

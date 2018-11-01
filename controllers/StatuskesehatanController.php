@@ -65,6 +65,7 @@ class StatuskesehatanController extends Controller
     public function actionCreate()
     {
         $model = new StatusKesehatan();
+        $model->id_sts_sehat = $model::getNextId();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_sts_sehat]);

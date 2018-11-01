@@ -65,6 +65,7 @@ class SukubangsaController extends Controller
     public function actionCreate()
     {
         $model = new SukuBangsa();
+        $model->id_suku = $model::getNextId();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_suku]);

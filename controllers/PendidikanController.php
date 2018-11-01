@@ -65,6 +65,7 @@ class PendidikanController extends Controller
     public function actionCreate()
     {
         $model = new Pendidikan();
+        $model->id_pendidikan = $model::getNextId();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_pendidikan]);

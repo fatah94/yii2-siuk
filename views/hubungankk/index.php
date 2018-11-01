@@ -26,14 +26,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id_hub_kk',
+            // 'id_hub_kk',
             'deskripsi_hub_kk',
-            [
-                'attribute' => 'acuan',
-                'value' => function ($data) {
-                    return ($data->acuan == 1) ? 'Ya' : '';
-                },
-            ],
+
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\BidangStudi;
-use app\models\BidangStudiSearch;
+use app\models\WaktuBaptis;
+use app\models\WaktuBaptisSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * BidangstudiController implements the CRUD actions for BidangStudi model.
+ * WaktubaptisController implements the CRUD actions for WaktuBaptis model.
  */
-class BidangstudiController extends Controller
+class WaktubaptisController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,12 +30,12 @@ class BidangstudiController extends Controller
     }
 
     /**
-     * Lists all BidangStudi models.
+     * Lists all WaktuBaptis models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new BidangStudiSearch();
+        $searchModel = new WaktuBaptisSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class BidangstudiController extends Controller
     }
 
     /**
-     * Displays a single BidangStudi model.
+     * Displays a single WaktuBaptis model.
      * @param string $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,17 +58,17 @@ class BidangstudiController extends Controller
     }
 
     /**
-     * Creates a new BidangStudi model.
+     * Creates a new WaktuBaptis model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new BidangStudi();
-        $model->id_bidstudi = $model::getNextId();
+        $model = new WaktuBaptis();
+        $model->id_wkt_baptis = $model::getNextId();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_bidstudi]);
+            return $this->redirect(['view', 'id' => $model->id_wkt_baptis]);
         }
 
         return $this->render('create', [
@@ -77,7 +77,7 @@ class BidangstudiController extends Controller
     }
 
     /**
-     * Updates an existing BidangStudi model.
+     * Updates an existing WaktuBaptis model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
      * @return mixed
@@ -88,7 +88,7 @@ class BidangstudiController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_bidstudi]);
+            return $this->redirect(['view', 'id' => $model->id_wkt_baptis]);
         }
 
         return $this->render('update', [
@@ -97,7 +97,7 @@ class BidangstudiController extends Controller
     }
 
     /**
-     * Deletes an existing BidangStudi model.
+     * Deletes an existing WaktuBaptis model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
      * @return mixed
@@ -111,15 +111,15 @@ class BidangstudiController extends Controller
     }
 
     /**
-     * Finds the BidangStudi model based on its primary key value.
+     * Finds the WaktuBaptis model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return BidangStudi the loaded model
+     * @return WaktuBaptis the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = BidangStudi::findOne($id)) !== null) {
+        if (($model = WaktuBaptis::findOne($id)) !== null) {
             return $model;
         }
 

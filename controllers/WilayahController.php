@@ -65,6 +65,7 @@ class WilayahController extends Controller
     public function actionCreate()
     {
         $model = new Wilayah();
+        $model->id_wilayah = $model::getNextId();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_wilayah]);

@@ -9,6 +9,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use kartik\sidenav\SideNav;
 
 AppAsset::register($this);
 
@@ -40,7 +41,6 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Umat', 'url' => ['/umat/index']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -59,11 +59,117 @@ AppAsset::register($this);
     ?>
 
     <div class="container">
-        <?= Breadcrumbs::widget([
+    <div class="row">
+    <div class="col-md-2">
+    <?php
+        // OR if this package is installed separately, you can use
+        // use kartik\sidenav\SideNav;
+        use yii\helpers\Url;
+        echo SideNav::widget([
+            'type' => SideNav::TYPE_DEFAULT,
+            'heading' => 'Menu',
+            'items' => [
+                [
+                    'url' => '/agama/index',
+                    'label' => 'Agama',
+                ],
+                [
+                    'url' => '/bidangstudi/index',
+                    'label' => 'Bidang Studi',
+                ],
+                [
+                    'url' => '/boys/index',
+                    'label' => 'Boys',
+                ],
+                [
+                    'url' => '/ekonomi/index',
+                    'label' => 'Ekonomi',
+                ],
+                [
+                    'url' => '/golongandarah/index',
+                    'label' => 'Golongan Darah',
+                ],
+                [
+                    'url' => '/hubungankk/index',
+                    'label' => 'Hubungan KK',
+                ],
+                [
+                    'url' => '/jabatansosial/index',
+                    'label' => 'Jabatan Sosial',
+                ],
+                [
+                    'url' => '/jenisrt/index',
+                    'label' => 'Jenis RT',
+                ],
+                [
+                    'url' => '/keterlibatan/index',
+                    'label' => 'Keterlibatan',
+                ],
+                [
+                    'url' => '/keuskupan/index',
+                    'label' => 'Keuskupan',
+                ],
+                [
+                    'url' => '/lingkungan/index',
+                    'label' => 'Lingkungan',
+                ],
+                [
+                    'url' => '/paroki/index',
+                    'label' => 'Paroki',
+                ],
+                [
+                    'url' => '/pekerjaan/index',
+                    'label' => 'Pekerjaan',
+                ],
+                [
+                    'url' => '/pendidikan/index',
+                    'label' => 'Pendidikan',
+                ],
+                [
+                    'url' => '/statusgerejawi/index',
+                    'label' => 'Status Gerejawi',
+                ],
+                [
+                    'url' => '/statuskesehatan/index',
+                    'label' => 'Status Kesehatan',
+                ],
+                [
+                    'url' => '/statusperkawinan/index',
+                    'label' => 'Status Perkawinan',
+                ],
+                [
+                    'url' => '/sukubangsa/index',
+                    'label' => 'Suku',
+                ],
+                [
+                    'url' => '/toys/index',
+                    'label' => 'Toys',
+                ],
+                [
+                    'url' => '/umat/index',
+                    'label' => 'Umat',
+                ],
+                [
+                    'url' => '/waktubaptis/index',
+                    'label' => 'Waktu Baptis',
+                ],
+                [
+                    'url' => '/wilayah/index',
+                    'label' => 'Wilayah',
+                ],
+
+            ],
+        ]);
+        ?>
+    </div>
+    <div class="col-md-10">
+    <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
         <?= $content ?>
+    </div>
+    </div>
     </div>
 </div>
 

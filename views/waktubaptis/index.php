@@ -4,20 +4,20 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\EkonomiSearch */
+/* @var $searchModel app\models\WaktuBaptisSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Ekonomis';
+$this->title = 'Waktu Baptis';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="ekonomi-index">
+<div class="waktu-baptis-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Ekonomi', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Waktu Baptis', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -26,9 +26,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            // 'id_ekonomi',
-            'kriteria_ekonomi',
-            'deskripsi_ekonomi',
+            // 'id_wkt_baptis',
+            'deskripsi_wkt_baptis',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

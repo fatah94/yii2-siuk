@@ -12,11 +12,8 @@ use Yii;
  */
 class JabatanSosial extends \yii\db\ActiveRecord
 {
-    public function beforeSave($insert) {
-        if ($insert) {
-            $this->id_jbt_sosial = DBHelper::getNextId(self::tableName(), 'id_jbt_sosial', 2);
-        }
-        return parent::beforeSave($insert);
+    public static function getNextId() {
+        return DBHelper::getNextId(self::tableName(), 'id_jbt_sosial', 2);
     }
     /**
      * {@inheritdoc}

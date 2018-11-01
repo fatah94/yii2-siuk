@@ -65,6 +65,7 @@ class StatusgerejawiController extends Controller
     public function actionCreate()
     {
         $model = new StatusGerejawi();
+        $model->id_sts_gerejawi = $model::getNextId();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_sts_gerejawi]);

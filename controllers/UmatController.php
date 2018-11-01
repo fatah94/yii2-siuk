@@ -64,9 +64,13 @@ class UmatController extends Controller
     {
         $searchModel = new UmatSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $id);
+        $data = $this->findModel($id);
 
+        if(empty($data)){
+            return $this->redirect(['index']);
+        }
         return $this->render('viewkk', [
-            'nama_kk' => $this->findModel($id)['nama_anggota_rt'],
+            'nama_kk' => $data['nama_anggota_rt'],
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -82,14 +86,18 @@ class UmatController extends Controller
         $model = new Umat();
         if(Yii::$app->request->isPost){
             $model->load(Yii::$app->request->post());
+            $model->tgl_update = date('Y-m-d H:i:s');
+            $model->tahun_mulai_tinggal = substr($model->tahun_mulai_tinggal,0,4);
 
             if(isset($_GET['id'])){
                 $model->id_keluarga = (int)$_GET['id'];
+            }else{
+                $model->id_hub_kk = '01';
             }
     
             if ($model->save()) {
                 $idkk = ($model->id_keluarga==0) ? $model->id_umat : $model->id_keluarga;
-                return $this->redirect(['viewkk', 'id' => $id_keluarga]);
+                return $this->redirect(['viewkk', 'id' => $idkk]);
             }
         }
 
@@ -115,8 +123,14 @@ class UmatController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_umat]);
+        if(Yii::$app->request->isPost){
+            $model->load(Yii::$app->request->post());
+            $model->tahun_mulai_tinggal = substr($model->tahun_mulai_tinggal,0,4);
+            $model->tgl_update = date('Y-m-d H:i:s');
+    
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id_umat]);
+            }
         }
 
         return $this->render('update', [
@@ -133,9 +147,11 @@ class UmatController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $data = $this->findModel($id);
+        $id = $data->id_keluarga;
+        $data->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['viewkk', 'id' => $id]);
     }
 
     public function actionDeletekk($id)
@@ -160,8 +176,8 @@ class UmatController extends Controller
         if (($model = Umat::findOne($id)) !== null) {
             return $model;
         }
-
-        throw new NotFoundHttpException('The requested page does not exist.');
+        return null;
+        // throw new NotFoundHttpException('The requested page does not exist.');
     }
 
     protected function getKepalaKeluarga($id_umat, $id_keluarga)

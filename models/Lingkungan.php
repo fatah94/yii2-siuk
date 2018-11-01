@@ -15,11 +15,8 @@ use Yii;
  */
 class Lingkungan extends \yii\db\ActiveRecord
 {
-    public function beforeSave($insert) {
-        if ($insert) {
-            $this->id_lingkungan = DBHelper::getNextId(self::tableName(), 'id_lingkungan', 3);
-        }
-        return parent::beforeSave($insert);
+    public static function getNextId() {
+        return DBHelper::getNextId(self::tableName(), 'id_lingkungan', 3);
     }
     /**
      * {@inheritdoc}
@@ -58,4 +55,7 @@ class Lingkungan extends \yii\db\ActiveRecord
         ];
     }
 
+    public static function getListWilayah($id = Null){
+        return Umat::getListWilayah($id);
+    }
 }

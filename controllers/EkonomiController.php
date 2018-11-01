@@ -65,6 +65,7 @@ class EkonomiController extends Controller
     public function actionCreate()
     {
         $model = new Ekonomi();
+        $model->id_ekonomi = $model::getNextId();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_ekonomi]);

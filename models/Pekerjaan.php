@@ -12,11 +12,8 @@ use Yii;
  */
 class Pekerjaan extends \yii\db\ActiveRecord
 {
-    public function beforeSave($insert) {
-        if ($insert) {
-            $this->id_pekerjaan = DBHelper::getNextId(self::tableName(), 'id_pekerjaan', 2);
-        }
-        return parent::beforeSave($insert);
+    public static function getNextId() {
+        return DBHelper::getNextId(self::tableName(), 'id_pekerjaan', 2);
     }
     /**
      * {@inheritdoc}

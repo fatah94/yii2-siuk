@@ -12,8 +12,6 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_goldar')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'deskripsi_goldar')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">

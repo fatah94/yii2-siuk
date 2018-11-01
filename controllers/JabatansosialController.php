@@ -65,6 +65,7 @@ class JabatansosialController extends Controller
     public function actionCreate()
     {
         $model = new JabatanSosial();
+        $model->id_jbt_sosial = $model::getNextId();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_jbt_sosial]);

@@ -13,11 +13,8 @@ use Yii;
  */
 class Agama extends \yii\db\ActiveRecord
 {
-    public function beforeSave($insert) {
-        if ($insert) {
-            $this->id_agama = DBHelper::getNextId(self::tableName(), 'id_agama', 2);
-        }
-        return parent::beforeSave($insert);
+    public static function getNextId() {
+        return DBHelper::getNextId(self::tableName(), 'id_agama', 2);
     }
     /**
      * {@inheritdoc}

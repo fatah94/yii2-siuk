@@ -12,15 +12,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_lingkungan')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'nama_lingkungan')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'lingk_pengurus')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'lingk_kontak')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'id_wilayah')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'id_wilayah')->dropDownList($model::getListWilayah(), ['prompt'=>'Pilih Wilayah']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

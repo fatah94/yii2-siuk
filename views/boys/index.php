@@ -26,10 +26,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'boy_id',
+            // 'boy_id',
             'boy',
-            'toy_id',
-
+            [
+                'attribute' => 'toy_id',
+                'value' => function ($data) {
+                    return $data::getListToys($data->toy_id, TRUE);
+                },
+            ],  
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

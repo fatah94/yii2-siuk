@@ -65,6 +65,7 @@ class JenisrtController extends Controller
     public function actionCreate()
     {
         $model = new JenisRt();
+        $model->id_agamid_jenis_rta = $model::getNextId();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_jenis_rt]);

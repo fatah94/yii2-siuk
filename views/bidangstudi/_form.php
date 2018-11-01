@@ -12,8 +12,6 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_bidstudi')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'deskripsi_bidstudi')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">

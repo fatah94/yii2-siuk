@@ -6,9 +6,9 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Umat */
 
-$this->title = $model->id_umat;
+$this->title = $model->nama_anggota_rt;
 $this->params['breadcrumbs'][] = ['label' => 'Data Umat', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => 'Keluarga '.$datakk['nama'], 'url' => ['viewkk', 'id' => $datakk['id']]];
+$this->params['breadcrumbs'][] = ['label' => 'Keluarga '.$datakk['nama_anggota_rt'], 'url' => ['viewkk', 'id' => $datakk['id_umat']]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="umat-view">

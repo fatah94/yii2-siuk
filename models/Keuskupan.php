@@ -13,11 +13,8 @@ use Yii;
  */
 class Keuskupan extends \yii\db\ActiveRecord
 {
-    public function beforeSave($insert) {
-        if ($insert) {
-            $this->id_keuskupan = DBHelper::getNextId(self::tableName(), 'id_keuskupan', 3);
-        }
-        return parent::beforeSave($insert);
+    public static function getNextId() {
+        return DBHelper::getNextId(self::tableName(), 'id_keuskupan', 3);
     }
     /**
      * {@inheritdoc}

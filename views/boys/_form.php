@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'boy')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'toy_id')->textInput() ?>
+    <?= $form->field($model, 'toy_id')->dropDownList($model::getListToys(), ['prompt'=>'Pilih Mainan']) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
