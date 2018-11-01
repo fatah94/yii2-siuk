@@ -44,7 +44,7 @@ class BidangStudi extends \yii\db\ActiveRecord
     {
         return [
             'id_bidstudi' => 'Id Bidstudi',
-            'deskripsi_bidstudi' => 'Deskripsi Bidstudi',
+            'deskripsi_bidstudi' => 'Deskripsi Bidang studi',
         ];
     }
 }

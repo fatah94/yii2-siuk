@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Ekonomi */
 
 $this->title = 'Create Ekonomi';
-$this->params['breadcrumbs'][] = ['label' => 'Ekonomis', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Data Ekonomi', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ekonomi-create">

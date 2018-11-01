@@ -43,9 +43,9 @@ class StatusPerkawinan extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_sts_kawin' => 'Id Sts Kawin',
-            'deskripsi_sts_kawin' => 'Deskripsi Sts Kawin',
-            'keterangan_sts_kawin' => 'Keterangan Sts Kawin',
+            'id_sts_kawin' => 'Id Status Kawin',
+            'deskripsi_sts_kawin' => 'Deskripsi Status Kawin',
+            'keterangan_sts_kawin' => 'Keterangan Status Kawin',
         ];
     }
 }

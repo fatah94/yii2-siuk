@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\WaktuBaptis */
 
 $this->title = 'Create Waktu Baptis';
-$this->params['breadcrumbs'][] = ['label' => 'Waktu Baptis', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Data Waktu Bapti', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="waktu-baptis-create">

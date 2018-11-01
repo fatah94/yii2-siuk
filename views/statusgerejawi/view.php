@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\StatusGerejawi */
 
-$this->title = $model->id_sts_gerejawi;
-$this->params['breadcrumbs'][] = ['label' => 'Status Gerejawis', 'url' => ['index']];
+$this->title = $model->deskripsi_sts_gerejawi;
+$this->params['breadcrumbs'][] = ['label' => 'Data Status Gerejawi', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="status-gerejawi-view">

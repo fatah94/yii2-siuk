@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * JabatansosialController implements the CRUD actions for JabatanSosial model.
  */
-class JabatansosialController extends Controller
+class JabatansosialController extends ControllerHelper
 {
     /**
      * {@inheritdoc}

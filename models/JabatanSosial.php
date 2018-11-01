@@ -43,7 +43,7 @@ class JabatanSosial extends \yii\db\ActiveRecord
     {
         return [
             'id_jbt_sosial' => 'Id Jbt Sosial',
-            'deskripsi_jbt_sosial' => 'Deskripsi Jbt Sosial',
+            'deskripsi_jbt_sosial' => 'Deskripsi Jabatan Sosial',
         ];
     }
 }

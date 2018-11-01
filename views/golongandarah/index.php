@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\GolonganDarahSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Golongan Darahs';
+$this->title = 'Data Golongan Darah';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="golongan-darah-index">

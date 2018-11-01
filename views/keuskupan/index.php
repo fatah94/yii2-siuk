@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\KeuskupanSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Keuskupans';
+$this->title = 'Data Keuskupan';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="keuskupan-index">

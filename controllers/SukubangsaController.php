@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * SukubangsaController implements the CRUD actions for SukuBangsa model.
  */
-class SukubangsaController extends Controller
+class SukubangsaController extends ControllerHelper
 {
     /**
      * {@inheritdoc}

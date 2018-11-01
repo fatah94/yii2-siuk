@@ -43,9 +43,9 @@ class JenisRt extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_jenis_rt' => 'Id Jenis Rt',
-            'kriteria_rt' => 'Kriteria Rt',
-            'deskripsi_jenis_rt' => 'Deskripsi Jenis Rt',
+            'id_jenis_rt' => 'Id Jenis RT',
+            'kriteria_rt' => 'Kriteria RT',
+            'deskripsi_jenis_rt' => 'Deskripsi Jenis RT',
         ];
     }
 }

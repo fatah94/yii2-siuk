@@ -5,9 +5,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\GolonganDarah */
 
-$this->title = 'Update Golongan Darah: ' . $model->id_goldar;
-$this->params['breadcrumbs'][] = ['label' => 'Golongan Darahs', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id_goldar, 'url' => ['view', 'id' => $model->id_goldar]];
+$this->title = 'Update Golongan Darah: ' . $model->deskripsi_goldar;
+$this->params['breadcrumbs'][] = ['label' => 'Data Golongan Darah', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->deskripsi_goldar, 'url' => ['view', 'id' => $model->id_goldar]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="golongan-darah-update">

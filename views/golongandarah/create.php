@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\GolonganDarah */
 
 $this->title = 'Create Golongan Darah';
-$this->params['breadcrumbs'][] = ['label' => 'Golongan Darahs', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Data Golongan Darah', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="golongan-darah-create">

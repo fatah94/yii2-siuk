@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\StatusGerejawiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Status Gerejawis';
+$this->title = 'Data Status Gerejawi';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="status-gerejawi-index">

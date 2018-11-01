@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * StatusgerejawiController implements the CRUD actions for StatusGerejawi model.
  */
-class StatusgerejawiController extends Controller
+class StatusgerejawiController extends ControllerHelper
 {
     /**
      * {@inheritdoc}

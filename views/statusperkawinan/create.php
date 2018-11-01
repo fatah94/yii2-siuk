@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\StatusPerkawinan */
 
 $this->title = 'Create Status Perkawinan';
-$this->params['breadcrumbs'][] = ['label' => 'Status Perkawinans', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Data Status Perkawinan', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="status-perkawinan-create">

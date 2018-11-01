@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * UmatController implements the CRUD actions for Umat model.
  */
-class UmatController extends Controller
+class UmatController extends ControllerHelper
 {
     /**
      * {@inheritdoc}
@@ -134,6 +134,7 @@ class UmatController extends Controller
         }
 
         return $this->render('update', [
+            'datakk' => $this->getKepalaKeluarga($model['id_umat'], $model['id_keluarga']),
             'model' => $model,
         ]);
     }

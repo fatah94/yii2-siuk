@@ -39,20 +39,15 @@ use yii\widgets\Pjax;
                 'template' => '{view} &nbsp; {update} &nbsp; {delete}',
                 'buttons' => [
                     'view' => function ($url, $model) {
-                        return Html::a('Lihat', $url, [
-                                    'title' => Yii::t('app', 'Lihat'), 'class' => 'btn btn-success',
-                        ]);
+                        return Html::a('<span class="glyphicon glyphicon-eye-open">', $url, ['title' => Yii::t('app', 'View')]);
                     },
                     'update' => function ($url, $model) {
-                        return Html::a('Perbarui', $url, [
-                                    'title' => Yii::t('app', 'Perbarui'), 'class' => 'btn btn-primary',
-                        ]);
+                        return Html::a('<span class="glyphicon glyphicon-pencil">', $url, ['title' => Yii::t('app', 'Update')]);
                     },
                     'delete' => function ($url, $model) {
-                        return Html::a('Hapus', $url, [
-                                    'title' => Yii::t('app', 'Hapus'), 
-                                    'class' => 'btn btn-danger',
-                                    'aria-label' => Yii::t('app', 'Hapus'),
+                        return Html::a('<span class="glyphicon glyphicon-trash">', $url, [
+                                    'title' => Yii::t('app', 'Delete'), 
+                                    'aria-label' => Yii::t('app', 'Delete'),
                                     'data-pjax' => '0',
                                     'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this data?'),
                                     'data-method' => 'post',

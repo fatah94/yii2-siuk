@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\ToysSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Toys';
+$this->title = 'Data Toy';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="toys-index">

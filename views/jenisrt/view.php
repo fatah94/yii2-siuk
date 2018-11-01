@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\JenisRt */
 
-$this->title = $model->id_jenis_rt;
-$this->params['breadcrumbs'][] = ['label' => 'Jenis Rts', 'url' => ['index']];
+$this->title = $model->deskripsi_jenis_rt;
+$this->params['breadcrumbs'][] = ['label' => 'Data Jenis RT', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="jenis-rt-view">

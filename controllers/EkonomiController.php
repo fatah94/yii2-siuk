@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * EkonomiController implements the CRUD actions for Ekonomi model.
  */
-class EkonomiController extends Controller
+class EkonomiController extends ControllerHelper
 {
     /**
      * {@inheritdoc}

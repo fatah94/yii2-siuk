@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Lingkungan */
 
 $this->title = 'Create Lingkungan';
-$this->params['breadcrumbs'][] = ['label' => 'Lingkungans', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Data Lingkungan', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="lingkungan-create">

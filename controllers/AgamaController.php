@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * AgamaController implements the CRUD actions for Agama model.
  */
-class AgamaController extends Controller
+class AgamaController extends ControllerHelper
 {
     /**
      * {@inheritdoc}

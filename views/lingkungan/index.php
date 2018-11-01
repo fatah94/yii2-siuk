@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\LingkunganSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Lingkungans';
+$this->title = 'Data Lingkungan';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="lingkungan-index">

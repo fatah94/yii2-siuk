@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\JabatanSosial */
 
-$this->title = $model->id_jbt_sosial;
-$this->params['breadcrumbs'][] = ['label' => 'Jabatan Sosials', 'url' => ['index']];
+$this->title = $model->deskripsi_jbt_sosial;
+$this->params['breadcrumbs'][] = ['label' => 'Data Jabatan Sosial', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="jabatan-sosial-view">

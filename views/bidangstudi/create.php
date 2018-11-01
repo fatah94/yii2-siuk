@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\BidangStudi */
 
 $this->title = 'Create Bidang Studi';
-$this->params['breadcrumbs'][] = ['label' => 'Bidang Studis', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Data Bidang Studi', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bidang-studi-create">

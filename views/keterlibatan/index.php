@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\KeterlibatanSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Keterlibatans';
+$this->title = 'Data Keterlibatan';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="keterlibatan-index">

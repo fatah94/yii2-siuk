@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * BidangstudiController implements the CRUD actions for BidangStudi model.
  */
-class BidangstudiController extends Controller
+class BidangstudiController extends ControllerHelper
 {
     /**
      * {@inheritdoc}

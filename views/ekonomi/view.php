@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Ekonomi */
 
-$this->title = $model->id_ekonomi;
-$this->params['breadcrumbs'][] = ['label' => 'Ekonomis', 'url' => ['index']];
+$this->title = $model->kriteria_ekonomi;
+$this->params['breadcrumbs'][] = ['label' => 'Data Ekonomi', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ekonomi-view">

@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Wilayah */
 
-$this->title = $model->id_wilayah;
-$this->params['breadcrumbs'][] = ['label' => 'Wilayahs', 'url' => ['index']];
+$this->title = $model->nama_wilayah;
+$this->params['breadcrumbs'][] = ['label' => 'Data Wilayah', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="wilayah-view">

@@ -18,7 +18,8 @@ class BoysSearch extends Boys
     public function rules()
     {
         return [
-            [['boy_id', 'toy_id'], 'integer'],
+            [['boy_id'], 'integer'],
+            [['toy_id'], 'string'],
             [['boy'], 'safe'],
         ];
     }
@@ -41,7 +42,7 @@ class BoysSearch extends Boys
      */
     public function search($params)
     {
-        $query = Boys::find();
+        $query = Boys::find()->innerJoin('toys', '`toys`.`toy_id` = `boys`.`toy_id`');
 
         // add conditions that should always apply here
 
@@ -58,12 +59,13 @@ class BoysSearch extends Boys
         }
 
         // grid filtering conditions
-        $query->andFilterWhere([
-            'boy_id' => $this->boy_id,
-            'toy_id' => $this->toy_id,
-        ]);
+        // $query->andFilterWhere([
+        //     'boy_id' => $this->boy_id,
+        //     'toy_id' => $this->toy_id,
+        // ]);
 
-        $query->andFilterWhere(['like', 'boy', $this->boy]);
+        $query->andFilterWhere(['like', 'boy', $this->boy])
+                ->andFilterWhere(['like', 'toy', $this->toy_id]);
 
         return $dataProvider;
     }

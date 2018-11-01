@@ -14,7 +14,7 @@ use yii\filters\VerbFilter;
 /**
  * LingkunganController implements the CRUD actions for Lingkungan model.
  */
-class LingkunganController extends Controller
+class LingkunganController extends ControllerHelper
 {
     /**
      * {@inheritdoc}
@@ -79,6 +79,7 @@ class LingkunganController extends Controller
     public function actionCreate()
     {
         $model = new Lingkungan();
+        $model->id_lingkungan = $model::getNextId();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_lingkungan]);

@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\WaktuBaptis */
 
-$this->title = $model->id_wkt_baptis;
-$this->params['breadcrumbs'][] = ['label' => 'Waktu Baptis', 'url' => ['index']];
+$this->title = $model->deskripsi_wkt_baptis;
+$this->params['breadcrumbs'][] = ['label' => 'Data Waktu Baptis', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="waktu-baptis-view">

@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\StatusKesehatan */
 
-$this->title = $model->id_sts_sehat;
-$this->params['breadcrumbs'][] = ['label' => 'Status Kesehatans', 'url' => ['index']];
+$this->title = $model->deskripsis_sts_sehat;
+$this->params['breadcrumbs'][] = ['label' => 'Data Status Kesehatan', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="status-kesehatan-view">

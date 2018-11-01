@@ -5,9 +5,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\WaktuBaptis */
 
-$this->title = 'Update Waktu Baptis: ' . $model->id_wkt_baptis;
-$this->params['breadcrumbs'][] = ['label' => 'Waktu Baptis', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id_wkt_baptis, 'url' => ['view', 'id' => $model->id_wkt_baptis]];
+$this->title = 'Update Waktu Baptis: ' . $model->deskripsi_wkt_baptis;
+$this->params['breadcrumbs'][] = ['label' => 'Data Waktu Baptis', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->deskripsi_wkt_baptis, 'url' => ['view', 'id' => $model->id_wkt_baptis]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="waktu-baptis-update">

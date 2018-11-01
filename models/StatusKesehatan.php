@@ -42,8 +42,8 @@ class StatusKesehatan extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_sts_sehat' => 'Id Sts Sehat',
-            'deskripsi_sts_sehat' => 'Deskripsi Sts Sehat',
+            'id_sts_sehat' => 'Id Status Sehat',
+            'deskripsi_sts_sehat' => 'Deskripsi Status Sehat',
         ];
     }
 }

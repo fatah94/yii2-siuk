@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\WilayahSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Wilayahs';
+$this->title = 'Data Wilayah';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="wilayah-index">

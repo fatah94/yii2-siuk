@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\HubunganKk */
 
 $this->title = 'Create Hubungan Kk';
-$this->params['breadcrumbs'][] = ['label' => 'Hubungan Kks', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Data Hubungan Kepala Keluarga', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="hubungan-kk-create">

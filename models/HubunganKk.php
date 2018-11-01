@@ -43,7 +43,7 @@ class HubunganKk extends \yii\db\ActiveRecord
     {
         return [
             'id_hub_kk' => 'Id Hub Kk',
-            'deskripsi_hub_kk' => 'Deskripsi Hub Kk',
+            'deskripsi_hub_kk' => 'Deskripsi Hubungan KK',
         ];
     }
 }

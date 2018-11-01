@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Agama */
 
-$this->title = $model->id_agama;
-$this->params['breadcrumbs'][] = ['label' => 'Agamas', 'url' => ['index']];
+$this->title = $model->nama_agama;
+$this->params['breadcrumbs'][] = ['label' => 'Data Agama', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="agama-view">

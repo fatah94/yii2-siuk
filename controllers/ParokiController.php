@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * ParokiController implements the CRUD actions for Paroki model.
  */
-class ParokiController extends Controller
+class ParokiController extends ControllerHelper
 {
     /**
      * {@inheritdoc}

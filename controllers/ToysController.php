@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * ToysController implements the CRUD actions for Toys model.
  */
-class ToysController extends Controller
+class ToysController extends ControllerHelper
 {
     /**
      * {@inheritdoc}

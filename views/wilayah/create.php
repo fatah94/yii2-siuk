@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Wilayah */
 
 $this->title = 'Create Wilayah';
-$this->params['breadcrumbs'][] = ['label' => 'Wilayahs', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Data Wilayah', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="wilayah-create">

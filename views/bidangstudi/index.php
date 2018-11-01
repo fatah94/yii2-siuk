@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\BidangStudiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Bidang Studis';
+$this->title = 'Data Bidang Studi';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bidang-studi-index">

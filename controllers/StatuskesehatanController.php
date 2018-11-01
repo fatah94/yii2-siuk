@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * StatuskesehatanController implements the CRUD actions for StatusKesehatan model.
  */
-class StatuskesehatanController extends Controller
+class StatuskesehatanController extends ControllerHelper
 {
     /**
      * {@inheritdoc}

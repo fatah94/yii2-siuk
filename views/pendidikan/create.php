@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Pendidikan */
 
 $this->title = 'Create Pendidikan';
-$this->params['breadcrumbs'][] = ['label' => 'Pendidikans', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Data Pendidikan', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pendidikan-create">

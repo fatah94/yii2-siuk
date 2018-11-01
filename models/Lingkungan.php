@@ -49,9 +49,9 @@ class Lingkungan extends \yii\db\ActiveRecord
         return [
             'id_lingkungan' => 'Id Lingkungan',
             'nama_lingkungan' => 'Nama Lingkungan',
-            'lingk_pengurus' => 'Lingk Pengurus',
-            'lingk_kontak' => 'Lingk Kontak',
-            'id_wilayah' => 'Id Wilayah',
+            'lingk_pengurus' => 'Lingkungan Pengurus',
+            'lingk_kontak' => 'Lingkungan Kontak',
+            'id_wilayah' => 'Nama Wilayah',
         ];
     }
 

@@ -40,7 +40,7 @@ class LingkunganSearch extends Lingkungan
      */
     public function search($params)
     {
-        $query = Lingkungan::find();
+        $query = Lingkungan::find()->innerJoin('wilayah', '`lingkungan`.`id_wilayah` = `wilayah`.`id_wilayah`');;
 
         // add conditions that should always apply here
 
@@ -61,7 +61,7 @@ class LingkunganSearch extends Lingkungan
             ->andFilterWhere(['like', 'nama_lingkungan', $this->nama_lingkungan])
             ->andFilterWhere(['like', 'lingk_pengurus', $this->lingk_pengurus])
             ->andFilterWhere(['like', 'lingk_kontak', $this->lingk_kontak])
-            ->andFilterWhere(['like', 'id_wilayah', $this->id_wilayah]);
+            ->andFilterWhere(['like', 'nama_wilayah', $this->id_wilayah]);
 
         return $dataProvider;
     }

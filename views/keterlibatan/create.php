@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Keterlibatan */
 
 $this->title = 'Create Keterlibatan';
-$this->params['breadcrumbs'][] = ['label' => 'Keterlibatans', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Data Keterlibatan', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="keterlibatan-create">

@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\JenisRt */
 
-$this->title = 'Create Jenis Rt';
-$this->params['breadcrumbs'][] = ['label' => 'Jenis Rts', 'url' => ['index']];
+$this->title = 'Create Jenis RT';
+$this->params['breadcrumbs'][] = ['label' => 'Data Jenis RT', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="jenis-rt-create">

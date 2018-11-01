@@ -8,7 +8,7 @@ use yii\grid\GridView;
 /* @var $model app\models\Lingkungan */
 
 $this->title = 'Data Umat di Lingkungan ' . $nama_lingkungan;
-$this->params['breadcrumbs'][] = ['label' => 'Lingkungans', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Data Lingkungan', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="lingkungan-create">

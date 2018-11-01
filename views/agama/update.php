@@ -5,9 +5,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Agama */
 
-$this->title = 'Update Agama: ' . $model->id_agama;
-$this->params['breadcrumbs'][] = ['label' => 'Agamas', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id_agama, 'url' => ['view', 'id' => $model->id_agama]];
+$this->title = 'Update Agama: ' . $model->nama_agama;
+$this->params['breadcrumbs'][] = ['label' => 'Data Agama', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->nama_agama, 'url' => ['view', 'id' => $model->id_agama]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="agama-update">

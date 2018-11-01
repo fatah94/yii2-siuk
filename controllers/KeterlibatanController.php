@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * KeterlibatanController implements the CRUD actions for Keterlibatan model.
  */
-class KeterlibatanController extends Controller
+class KeterlibatanController extends ControllerHelper
 {
     /**
      * {@inheritdoc}

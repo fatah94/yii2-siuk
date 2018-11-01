@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\SukuBangsa */
 
-$this->title = $model->id_suku;
-$this->params['breadcrumbs'][] = ['label' => 'Suku Bangsas', 'url' => ['index']];
+$this->title = $model->deskripsi_suku;
+$this->params['breadcrumbs'][] = ['label' => 'Data Suku Bangsa', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="suku-bangsa-view">

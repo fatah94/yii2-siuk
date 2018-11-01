@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\JabatanSosial */
 
 $this->title = 'Create Jabatan Sosial';
-$this->params['breadcrumbs'][] = ['label' => 'Jabatan Sosials', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Data Jabatan Sosial', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="jabatan-sosial-create">

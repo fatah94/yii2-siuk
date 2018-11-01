@@ -42,8 +42,8 @@ class StatusGerejawi extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_sts_gerejawi' => 'Id Sts Gerejawi',
-            'deskripsi_sts_gerejawi' => 'Deskripsi Sts Gerejawi',
+            'id_sts_gerejawi' => 'Id Status Gerejawi',
+            'deskripsi_sts_gerejawi' => 'Deskripsi Status Gerejawi',
         ];
     }
 }

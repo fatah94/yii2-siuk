@@ -6,7 +6,7 @@ use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\UmatSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-$this->title = 'Umats';
+$this->title = 'Data Umat';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="umat-index">
@@ -87,15 +87,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'template' => '{view} &nbsp; {delete}',
                 'buttons' => [
                     'view' => function ($url, $model) {
-                        return Html::a('Lihat', $url, [
-                                    'title' => Yii::t('app', 'Lihat'), 'class' => 'btn btn-success',
-                        ]);
+                        return Html::a('<span class="glyphicon glyphicon-eye-open">', $url, ['title' => Yii::t('app', 'View')]);
                     },
                     'delete' => function ($url, $model) {
-                        return Html::a('Hapus', $url, [
-                                    'title' => Yii::t('app', 'Hapus'), 
-                                    'class' => 'btn btn-danger',
-                                    'aria-label' => Yii::t('app', 'Hapus'),
+                        return Html::a('<span class="glyphicon glyphicon-trash">', $url, [
+                                    'title' => Yii::t('app', 'Delete'), 
+                                    'aria-label' => Yii::t('app', 'Delete'),
                                     'data-pjax' => '0',
                                     'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this data?'),
                                     'data-method' => 'post',

@@ -10,6 +10,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use kartik\sidenav\SideNav;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 
@@ -22,7 +23,7 @@ AppAsset::register($this);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode(Yii::$app->name) ?></title>
+    <title><?= Yii::$app->name ?> | <?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
 <body>
@@ -62,49 +63,10 @@ AppAsset::register($this);
     <div class="row">
     <div class="col-md-2">
     <?php
-        // OR if this package is installed separately, you can use
-        // use kartik\sidenav\SideNav;
-        use yii\helpers\Url;
-        echo SideNav::widget([
+        $sidenav = SideNav::widget([
             'type' => SideNav::TYPE_DEFAULT,
             'heading' => 'Menu',
             'items' => [
-                [
-                    'url' => '/agama/index',
-                    'label' => 'Agama',
-                ],
-                [
-                    'url' => '/bidangstudi/index',
-                    'label' => 'Bidang Studi',
-                ],
-                [
-                    'url' => '/boys/index',
-                    'label' => 'Boys',
-                ],
-                [
-                    'url' => '/ekonomi/index',
-                    'label' => 'Ekonomi',
-                ],
-                [
-                    'url' => '/golongandarah/index',
-                    'label' => 'Golongan Darah',
-                ],
-                [
-                    'url' => '/hubungankk/index',
-                    'label' => 'Hubungan KK',
-                ],
-                [
-                    'url' => '/jabatansosial/index',
-                    'label' => 'Jabatan Sosial',
-                ],
-                [
-                    'url' => '/jenisrt/index',
-                    'label' => 'Jenis RT',
-                ],
-                [
-                    'url' => '/keterlibatan/index',
-                    'label' => 'Keterlibatan',
-                ],
                 [
                     'url' => '/keuskupan/index',
                     'label' => 'Keuskupan',
@@ -118,48 +80,96 @@ AppAsset::register($this);
                     'label' => 'Paroki',
                 ],
                 [
-                    'url' => '/pekerjaan/index',
-                    'label' => 'Pekerjaan',
-                ],
-                [
-                    'url' => '/pendidikan/index',
-                    'label' => 'Pendidikan',
-                ],
-                [
-                    'url' => '/statusgerejawi/index',
-                    'label' => 'Status Gerejawi',
-                ],
-                [
-                    'url' => '/statuskesehatan/index',
-                    'label' => 'Status Kesehatan',
-                ],
-                [
-                    'url' => '/statusperkawinan/index',
-                    'label' => 'Status Perkawinan',
-                ],
-                [
-                    'url' => '/sukubangsa/index',
-                    'label' => 'Suku',
-                ],
-                [
-                    'url' => '/toys/index',
-                    'label' => 'Toys',
-                ],
-                [
                     'url' => '/umat/index',
                     'label' => 'Umat',
                 ],
                 [
-                    'url' => '/waktubaptis/index',
-                    'label' => 'Waktu Baptis',
-                ],
-                [
-                    'url' => '/wilayah/index',
-                    'label' => 'Wilayah',
+                    'label' => 'Others',
+                    'items' => [
+                        [
+                            'url' => '/agama/index',
+                            'label' => 'Agama',
+                        ],
+                        [
+                            'url' => '/bidangstudi/index',
+                            'label' => 'Bidang Studi',
+                        ],
+                        [
+                            'url' => '/boys/index',
+                            'label' => 'Boys',
+                        ],
+                        [
+                            'url' => '/ekonomi/index',
+                            'label' => 'Ekonomi',
+                        ],
+                        [
+                            'url' => '/golongandarah/index',
+                            'label' => 'Golongan Darah',
+                        ],
+                        [
+                            'url' => '/hubungankk/index',
+                            'label' => 'Hubungan KK',
+                        ],        
+                        [
+                            'url' => '/jabatansosial/index',
+                            'label' => 'Jabatan Sosial',
+                        ],
+                        [
+                            'url' => '/jenisrt/index',
+                            'label' => 'Jenis RT',
+                        ],
+                        [
+                            'url' => '/keterlibatan/index',
+                            'label' => 'Keterlibatan',
+                        ],
+                        [
+                            'url' => '/statusgerejawi/index',
+                            'label' => 'Status Gerejawi',
+                        ],
+                        [
+                            'url' => '/statuskesehatan/index',
+                            'label' => 'Status Kesehatan',
+                        ],
+                        [
+                            'url' => '/statusperkawinan/index',
+                            'label' => 'Status Perkawinan',
+                        ],
+                        [
+                            'url' => '/pekerjaan/index',
+                            'label' => 'Pekerjaan',
+                        ],
+                        [
+                            'url' => '/pendidikan/index',
+                            'label' => 'Pendidikan',
+                        ],
+                        [
+                            'url' => '/sukubangsa/index',
+                            'label' => 'Suku',
+                        ],
+                        [
+                            'url' => '/toys/index',
+                            'label' => 'Toys',
+                        ],
+                        [
+                            'url' => '/waktubaptis/index',
+                            'label' => 'Waktu Baptis',
+                        ],
+                        [
+                            'url' => '/wilayah/index',
+                            'label' => 'Wilayah',
+                        ],
+                    ],
                 ],
 
             ],
         ]);
+        $identity = Yii::$app->user->identity;
+        $role = !empty($identity) ? $identity->role : '';
+
+        if(!empty($identity->role)){
+            echo $sidenav;
+        }
+
         ?>
     </div>
     <div class="col-md-10">

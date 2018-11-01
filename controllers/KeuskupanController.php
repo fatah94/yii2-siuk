@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * KeuskupanController implements the CRUD actions for Keuskupan model.
  */
-class KeuskupanController extends Controller
+class KeuskupanController extends ControllerHelper
 {
     /**
      * {@inheritdoc}

@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\ParokiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Parokis';
+$this->title = 'Data Paroki';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="paroki-index">

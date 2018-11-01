@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\EkonomiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Ekonomis';
+$this->title = 'Data Ekonomi';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ekonomi-index">

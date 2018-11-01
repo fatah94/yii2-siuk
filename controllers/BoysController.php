@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * BoysController implements the CRUD actions for Boys model.
  */
-class BoysController extends Controller
+class BoysController extends ControllerHelper
 {
     /**
      * {@inheritdoc}

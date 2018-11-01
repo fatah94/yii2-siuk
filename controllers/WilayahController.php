@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * WilayahController implements the CRUD actions for Wilayah model.
  */
-class WilayahController extends Controller
+class WilayahController extends ControllerHelper
 {
     /**
      * {@inheritdoc}

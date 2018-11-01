@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Paroki */
 
 $this->title = 'Create Paroki';
-$this->params['breadcrumbs'][] = ['label' => 'Parokis', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Data Paroki', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="paroki-create">

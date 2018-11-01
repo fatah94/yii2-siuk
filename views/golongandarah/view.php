@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\GolonganDarah */
 
-$this->title = $model->id_goldar;
-$this->params['breadcrumbs'][] = ['label' => 'Golongan Darahs', 'url' => ['index']];
+$this->title = $model->deskripsi_goldar;
+$this->params['breadcrumbs'][] = ['label' => 'Data Golongan Darah', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="golongan-darah-view">

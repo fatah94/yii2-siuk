@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Pekerjaan */
 
 $this->title = 'Create Pekerjaan';
-$this->params['breadcrumbs'][] = ['label' => 'Pekerjaans', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Data Pekerjaan', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pekerjaan-create">

@@ -40,8 +40,8 @@ class Boys extends \yii\db\ActiveRecord
     {
         return [
             'boy_id' => 'Boy ID',
-            'boy' => 'Boy',
-            'toy_id' => 'Toy ID',
+            'boy' => 'Nama Anak',
+            'toy_id' => 'Mainan',
         ];
     }
 

@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\BidangStudi */
 
-$this->title = $model->id_bidstudi;
-$this->params['breadcrumbs'][] = ['label' => 'Bidang Studis', 'url' => ['index']];
+$this->title = $model->deskripsi_bidstudi;
+$this->params['breadcrumbs'][] = ['label' => 'Data Bidang Studi', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="bidang-studi-view">

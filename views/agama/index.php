@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\AgamaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Agamas';
+$this->title = 'Data Agama';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="agama-index">

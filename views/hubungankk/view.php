@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\HubunganKk */
 
-$this->title = $model->id_hub_kk;
-$this->params['breadcrumbs'][] = ['label' => 'Hubungan Kks', 'url' => ['index']];
+$this->title = $model->deskripsi_hub_kk;
+$this->params['breadcrumbs'][] = ['label' => 'Data Hubungan Kepala Keluarga', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="hubungan-kk-view">

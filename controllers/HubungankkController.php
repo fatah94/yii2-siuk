@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * HubungankkController implements the CRUD actions for HubunganKk model.
  */
-class HubungankkController extends Controller
+class HubungankkController extends ControllerHelper
 {
     /**
      * {@inheritdoc}

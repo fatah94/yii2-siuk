@@ -5,9 +5,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\StatusPerkawinan */
 
-$this->title = 'Update Status Perkawinan: ' . $model->id_sts_kawin;
-$this->params['breadcrumbs'][] = ['label' => 'Status Perkawinans', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id_sts_kawin, 'url' => ['view', 'id' => $model->id_sts_kawin]];
+$this->title = 'Update Status Perkawinan: ' . $model->deskripsi_sts_kawin;
+$this->params['breadcrumbs'][] = ['label' => 'Data Status Perkawinan', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->deskripsi_sts_kawin, 'url' => ['view', 'id' => $model->id_sts_kawin]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="status-perkawinan-update">

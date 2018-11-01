@@ -47,8 +47,8 @@ class Wilayah extends \yii\db\ActiveRecord
         return [
             'id_wilayah' => 'Id Wilayah',
             'nama_wilayah' => 'Nama Wilayah',
-            'wil_pengurus' => 'Wil Pengurus',
-            'wil_kontak' => 'Wil Kontak',
+            'wil_pengurus' => 'Wilayah Pengurus',
+            'wil_kontak' => 'Wilayah Kontak',
         ];
     }
 }

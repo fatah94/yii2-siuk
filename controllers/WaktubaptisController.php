@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * WaktubaptisController implements the CRUD actions for WaktuBaptis model.
  */
-class WaktubaptisController extends Controller
+class WaktubaptisController extends ControllerHelper
 {
     /**
      * {@inheritdoc}

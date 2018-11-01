@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\WaktuBaptisSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Waktu Baptis';
+$this->title = 'Data Waktu Baptis';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="waktu-baptis-index">

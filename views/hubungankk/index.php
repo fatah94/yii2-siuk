@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\HubunganKkSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Hubungan Kks';
+$this->title = 'Data Hubungan Kepala Keluarga';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="hubungan-kk-index">

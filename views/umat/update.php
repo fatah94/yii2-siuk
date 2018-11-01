@@ -5,9 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Umat */
 
-$this->title = 'Update Umat: ' . $model->id_umat;
-$this->params['breadcrumbs'][] = ['label' => 'Umats', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id_umat, 'url' => ['view', 'id' => $model->id_umat]];
+$this->title = 'Update Umat: ' . $model->nama_anggota_rt;
+$this->params['breadcrumbs'][] = ['label' => 'Data Umat', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Keluarga '.$datakk['nama_anggota_rt'], 'url' => ['viewkk', 'id' => $datakk['id_umat']]];
+$this->params['breadcrumbs'][] = ['label' => $model->nama_anggota_rt, 'url' => ['view', 'id' => $model->id_umat]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="umat-update">

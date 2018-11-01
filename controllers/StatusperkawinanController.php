@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * StatusperkawinanController implements the CRUD actions for StatusPerkawinan model.
  */
-class StatusperkawinanController extends Controller
+class StatusperkawinanController extends ControllerHelper
 {
     /**
      * {@inheritdoc}

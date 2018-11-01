@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\SukuBangsaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Suku Bangsas';
+$this->title = 'Data Suku Bangsa';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="suku-bangsa-index">

@@ -42,8 +42,8 @@ class WaktuBaptis extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_wkt_baptis' => 'Id Wkt Baptis',
-            'deskripsi_wkt_baptis' => 'Deskripsi Wkt Baptis',
+            'id_wkt_baptis' => 'Id Waktu Baptis',
+            'deskripsi_wkt_baptis' => 'Deskripsi Waktu Baptis',
         ];
     }
 }

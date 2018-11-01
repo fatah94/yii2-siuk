@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * JenisrtController implements the CRUD actions for JenisRt model.
  */
-class JenisrtController extends Controller
+class JenisrtController extends ControllerHelper
 {
     /**
      * {@inheritdoc}
@@ -65,7 +65,7 @@ class JenisrtController extends Controller
     public function actionCreate()
     {
         $model = new JenisRt();
-        $model->id_agamid_jenis_rta = $model::getNextId();
+        $model->id_jenis_rt = $model::getNextId();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_jenis_rt]);

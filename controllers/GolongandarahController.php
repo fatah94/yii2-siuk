@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * GolongandarahController implements the CRUD actions for GolonganDarah model.
  */
-class GolongandarahController extends Controller
+class GolongandarahController extends ControllerHelper
 {
     /**
      * {@inheritdoc}

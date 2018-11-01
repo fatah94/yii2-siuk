@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\SukuBangsa */
 
 $this->title = 'Create Suku Bangsa';
-$this->params['breadcrumbs'][] = ['label' => 'Suku Bangsas', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Data Suku Bangsa', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="suku-bangsa-create">

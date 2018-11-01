@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Paroki */
 
-$this->title = $model->id_paroki;
-$this->params['breadcrumbs'][] = ['label' => 'Parokis', 'url' => ['index']];
+$this->title = $model->nama_paroki;
+$this->params['breadcrumbs'][] = ['label' => 'Data Paroki', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="paroki-view">

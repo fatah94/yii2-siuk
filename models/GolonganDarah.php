@@ -42,8 +42,8 @@ class GolonganDarah extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_goldar' => 'Id Goldar',
-            'deskripsi_goldar' => 'Deskripsi Goldar',
+            'id_goldar' => 'Id Golongan Darah',
+            'deskripsi_goldar' => 'Golongan Darah',
         ];
     }
 }

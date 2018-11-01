@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Lingkungan */
 
-$this->title = $model->id_lingkungan;
-$this->params['breadcrumbs'][] = ['label' => 'Lingkungans', 'url' => ['index']];
+$this->title = $model->nama_lingkungan;
+$this->params['breadcrumbs'][] = ['label' => 'Data Lingkungan', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="lingkungan-view">

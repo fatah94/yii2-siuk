@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\StatusKesehatanSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Status Kesehatans';
+$this->title = 'Data Status Kesehatan';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="status-kesehatan-index">
