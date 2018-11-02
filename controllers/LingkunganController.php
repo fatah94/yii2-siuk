@@ -62,7 +62,7 @@ class LingkunganController extends ControllerHelper
     public function actionViewumat($id)
     {
         $searchModel = new UmatSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, null, null, $id);
 
         return $this->render('viewumat', [
             'nama_lingkungan' => $this->findModel($id)['nama_lingkungan'],

@@ -68,96 +68,88 @@ AppAsset::register($this);
             'heading' => 'Menu',
             'items' => [
                 [
-                    'url' => '/keuskupan/index',
+                    'url' => ['/keuskupan/index'],
                     'label' => 'Keuskupan',
                 ],
                 [
-                    'url' => '/lingkungan/index',
+                    'url' => ['/lingkungan/index'],
                     'label' => 'Lingkungan',
                 ],
                 [
-                    'url' => '/paroki/index',
+                    'url' => ['/paroki/index'],
                     'label' => 'Paroki',
                 ],
                 [
-                    'url' => '/umat/index',
+                    'url' => ['/umat/index'],
                     'label' => 'Umat',
                 ],
                 [
                     'label' => 'Others',
                     'items' => [
                         [
-                            'url' => '/agama/index',
+                            'url' => ['/agama/index'],
                             'label' => 'Agama',
                         ],
                         [
-                            'url' => '/bidangstudi/index',
+                            'url' => ['/bidangstudi/index'],
                             'label' => 'Bidang Studi',
                         ],
                         [
-                            'url' => '/boys/index',
-                            'label' => 'Boys',
-                        ],
-                        [
-                            'url' => '/ekonomi/index',
+                            'url' => ['/ekonomi/index'],
                             'label' => 'Ekonomi',
                         ],
                         [
-                            'url' => '/golongandarah/index',
+                            'url' => ['/golongandarah/index'],
                             'label' => 'Golongan Darah',
                         ],
                         [
-                            'url' => '/hubungankk/index',
+                            'url' => ['/hubungankk/index'],
                             'label' => 'Hubungan KK',
                         ],        
                         [
-                            'url' => '/jabatansosial/index',
+                            'url' => ['/jabatansosial/index'],
                             'label' => 'Jabatan Sosial',
                         ],
                         [
-                            'url' => '/jenisrt/index',
+                            'url' => ['/jenisrt/index'],
                             'label' => 'Jenis RT',
                         ],
                         [
-                            'url' => '/keterlibatan/index',
+                            'url' => ['/keterlibatan/index'],
                             'label' => 'Keterlibatan',
                         ],
                         [
-                            'url' => '/statusgerejawi/index',
+                            'url' => ['/statusgerejawi/index'],
                             'label' => 'Status Gerejawi',
                         ],
                         [
-                            'url' => '/statuskesehatan/index',
+                            'url' => ['/statuskesehatan/index'],
                             'label' => 'Status Kesehatan',
                         ],
                         [
-                            'url' => '/statusperkawinan/index',
+                            'url' => ['/statusperkawinan/index'],
                             'label' => 'Status Perkawinan',
                         ],
                         [
-                            'url' => '/pekerjaan/index',
+                            'url' => ['/pekerjaan/index'],
                             'label' => 'Pekerjaan',
                         ],
                         [
-                            'url' => '/pendidikan/index',
+                            'url' => ['/pendidikan/index'],
                             'label' => 'Pendidikan',
                         ],
                         [
-                            'url' => '/sukubangsa/index',
+                            'url' => ['/sukubangsa/index'],
                             'label' => 'Suku',
                         ],
                         [
-                            'url' => '/toys/index',
-                            'label' => 'Toys',
-                        ],
-                        [
-                            'url' => '/waktubaptis/index',
+                            'url' => ['/waktubaptis/index'],
                             'label' => 'Waktu Baptis',
                         ],
                         [
-                            'url' => '/wilayah/index',
+                            'url' => ['/wilayah/index'],
                             'label' => 'Wilayah',
-                        ],
+                        ],  
                     ],
                 ],
 

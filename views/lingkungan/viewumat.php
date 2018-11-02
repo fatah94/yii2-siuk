@@ -45,26 +45,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 'header' => 'Actions',
                 'headerOptions' => ['style' => 'color:#337ab7'],
                 'template' => '{view} &nbsp; {update} &nbsp; {delete}',
+             
                 'buttons' => [
                     'view' => function ($url, $model) {
-                        return Html::a('Lihat', $url, [
-                                    'title' => Yii::t('app', 'Lihat'), 
-                                    'target' => '_blank',
-                                    'class' => 'btn btn-success',
-                        ]);
+                        return Html::a('<span class="glyphicon glyphicon-eye-open">', $url, ['title' => Yii::t('app', 'View'), 'target' => '_blank']);
                     },
                     'update' => function ($url, $model) {
-                        return Html::a('Perbarui', $url, [
-                                    'title' => Yii::t('app', 'Perbarui'), 
-                                    'target' => '_blank',
-                                    'class' => 'btn btn-primary',
-                        ]);
+                        return Html::a('<span class="glyphicon glyphicon-pencil">', $url, ['title' => Yii::t('app', 'Update'), 'target' => '_blank' ]);
                     },
                     'delete' => function ($url, $model) {
-                        return Html::a('Hapus', $url, [
-                                    'title' => Yii::t('app', 'Hapus'), 
-                                    'class' => 'btn btn-danger',
-                                    'aria-label' => Yii::t('app', 'Hapus'),
+                        return Html::a('<span class="glyphicon glyphicon-trash">', $url, [
+                                    'title' => Yii::t('app', 'Delete'), 
+                                    'aria-label' => Yii::t('app', 'Delete'),
                                     'data-pjax' => '0',
                                     'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this data?'),
                                     'data-method' => 'post',
@@ -72,14 +64,16 @@ $this->params['breadcrumbs'][] = $this->title;
                     }
                 ],
                 'urlCreator' => function ($action, $model, $key, $index) {
+                    $baseUrl = Yii::$app->request->BaseUrl;
+
                     if ($action === 'view') {
-                        $url ='/umat/view?id='.$model->id_umat;
+                        $url = ['/umat/view?id='.$model->id_umat];
                         return $url;
                     }else if ($action === 'update') {
-                        $url ='/umat/update?id='.$model->id_umat;
+                        $url = ['/umat/update?id='.$model->id_umat];
                         return $url;
                     }else if ($action === 'delete') {
-                        $url ='/umat/delete?id='.$model->id_umat;
+                        $url = ['umat/delete?id='.$model->id_umat];
                         return $url;
                     }
                   }

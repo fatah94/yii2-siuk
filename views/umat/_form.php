@@ -140,8 +140,6 @@ use nex\datepicker\DatePicker;
 
     <?= $form->field($model, 'notum')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'tgl_update')->textInput(['readonly'=>'']) ?>
-
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
@@ -149,3 +147,4 @@ use nex\datepicker\DatePicker;
     <?php ActiveForm::end(); ?>
 
 </div>
+    

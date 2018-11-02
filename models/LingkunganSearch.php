@@ -40,7 +40,7 @@ class LingkunganSearch extends Lingkungan
      */
     public function search($params)
     {
-        $query = Lingkungan::find()->innerJoin('wilayah', '`lingkungan`.`id_wilayah` = `wilayah`.`id_wilayah`');;
+        $query = Lingkungan::find()->innerJoin('wilayah', '`lingkungan`.`id_wilayah` = `wilayah`.`id_wilayah`');
 
         // add conditions that should always apply here
 

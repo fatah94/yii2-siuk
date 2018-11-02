@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'nama_lingkungan',
                 'value' => function ($model, $key, $index, $column) {
-                    return Html::a($model->nama_lingkungan, ['/lingkungan/viewumat', 'id'=> $model->id_wilayah], 
+                    return Html::a($model->nama_lingkungan, ['/lingkungan/viewumat', 'id'=> $model->id_lingkungan], 
                     ['title' => 'Lihat Data Umat Di ' . $model->nama_lingkungan,]);
                 },
                 'format' => 'raw'
