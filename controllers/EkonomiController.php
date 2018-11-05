@@ -65,10 +65,15 @@ class EkonomiController extends ControllerHelper
     public function actionCreate()
     {
         $model = new Ekonomi();
-        $model->id_ekonomi = $model::getNextId();
+        
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id_ekonomi = $model::getNextId();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_ekonomi]);
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Menyimpan Ekonomi ' . $model->kriteria_ekonomi);
+                return $this->redirect(['view', 'id' => $model->id_ekonomi]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Menyimpan Ekonomi ' . $model->kriteria_ekonomi);
         }
 
         return $this->render('create', [
@@ -87,8 +92,12 @@ class EkonomiController extends ControllerHelper
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_ekonomi]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Memperbarui Ekonomi ' . $model->kriteria_ekonomi);
+                return $this->redirect(['view', 'id' => $model->id_ekonomi]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Memperbarui Ekonomi ' . $model->kriteria_ekonomi);
         }
 
         return $this->render('update', [
@@ -105,7 +114,14 @@ class EkonomiController extends ControllerHelper
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $kriteriaekonomi = $model->kriteria_ekonomi;
+        
+        if($model->delete()){
+            Yii::$app->session->setFlash('alert', 'Berhasil Menghapus Kriteria Ekonomi ' . $kriteriaekonomi);
+        }else{
+            Yii::$app->session->setFlash('alert', 'Gagal Menghapus Kriteria Ekonomi ' . $kriteriaekonomi);
+        }
 
         return $this->redirect(['index']);
     }

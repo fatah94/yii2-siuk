@@ -65,10 +65,15 @@ class SukubangsaController extends ControllerHelper
     public function actionCreate()
     {
         $model = new SukuBangsa();
-        $model->id_suku = $model::getNextId();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_suku]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id_suku = $model::getNextId();
+
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Menyimpan Suku Bangsa ' . $model->deskripsi_suku);
+                return $this->redirect(['view', 'id' => $model->id_suku]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Menyimpan Suku Bangsa ' . $model->deskripsi_suku);
         }
 
         return $this->render('create', [
@@ -87,8 +92,12 @@ class SukubangsaController extends ControllerHelper
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_suku]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Memperbarui Suku Bangsa ' . $model->deskripsi_suku);
+                return $this->redirect(['view', 'id' => $model->id_suku]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Memperbarui Suku Bangsa ' . $model->deskripsi_suku);
         }
 
         return $this->render('update', [
@@ -105,7 +114,14 @@ class SukubangsaController extends ControllerHelper
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $suku = $model->deskripsi_suku;
+        
+        if($model->delete()){
+            Yii::$app->session->setFlash('alert', 'Berhasil Menghapus Suku ' . $suku);
+        }else{
+            Yii::$app->session->setFlash('alert', 'Gagal Menghapus Suku ' . $suku);
+        }
 
         return $this->redirect(['index']);
     }

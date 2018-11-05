@@ -14,6 +14,9 @@ use yii\helpers\Url;
 
 AppAsset::register($this);
 
+if (Yii::$app->session->hasFlash('alert')) {
+    $this->registerJS('$("#alertModal").modal("show")');
+}
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -58,7 +61,21 @@ AppAsset::register($this);
     ]);
     NavBar::end();
     ?>
-
+    <?php if (Yii::$app->session->hasFlash('alert')) { ?>
+        <!-- Modal -->
+        <div class="modal fade top" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog " role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row text-center">
+                            <?= Yii::$app->session->getFlash("alert"); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Modal -->
+    <?php } ?>
     <div class="container">
     <div class="row">
     <div class="col-md-2">

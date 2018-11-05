@@ -65,10 +65,15 @@ class ParokiController extends ControllerHelper
     public function actionCreate()
     {
         $model = new Paroki();
-        $model->id_paroki = $model::getNextId();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_paroki]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id_paroki = $model::getNextId();
+
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Menyimpan Paroki ' . $model->nama_paroki);
+                return $this->redirect(['view', 'id' => $model->id_paroki]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Menyimpan Paroki ' . $model->nama_paroki);
         }
 
         return $this->render('create', [
@@ -87,8 +92,12 @@ class ParokiController extends ControllerHelper
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_paroki]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Memperbarui Paroki ' . $model->nama_paroki);
+                return $this->redirect(['view', 'id' => $model->id_paroki]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Memperbarui Paroki ' . $model->nama_paroki);
         }
 
         return $this->render('update', [
@@ -105,7 +114,14 @@ class ParokiController extends ControllerHelper
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $namaparoki = $model->nama_paroki;
+        
+        if($model->delete()){
+            Yii::$app->session->setFlash('alert', 'Berhasil Menghapus Paroki ' . $namaparoki);
+        }else{
+            Yii::$app->session->setFlash('alert', 'Gagal Menghapus Paroki ' . $namaparoki);
+        }
 
         return $this->redirect(['index']);
     }

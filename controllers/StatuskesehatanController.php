@@ -65,10 +65,13 @@ class StatuskesehatanController extends ControllerHelper
     public function actionCreate()
     {
         $model = new StatusKesehatan();
-        $model->id_sts_sehat = $model::getNextId();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_sts_sehat]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Menyimpan Status Kesehatan ' . $model->deskripsi_sts_sehat);
+                return $this->redirect(['view', 'id' => $model->id_sts_sehat]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Menyimpan Status Kesehatan ' . $model->deskripsi_sts_sehat);
         }
 
         return $this->render('create', [
@@ -87,8 +90,12 @@ class StatuskesehatanController extends ControllerHelper
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_sts_sehat]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Memperbarui Status Kesehatan ' . $model->deskripsi_sts_sehat);
+                return $this->redirect(['view', 'id' => $model->id_sts_sehat]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Memperbarui Status Kesehatan ' . $model->deskripsi_sts_sehat);
         }
 
         return $this->render('update', [
@@ -105,7 +112,14 @@ class StatuskesehatanController extends ControllerHelper
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $stssehat = $model->deskripsi_sts_sehat;
+        
+        if($model->delete()){
+            Yii::$app->session->setFlash('alert', 'Berhasil Menghapus Status Kesehatan ' . $stssehat);
+        }else{
+            Yii::$app->session->setFlash('alert', 'Gagal Menghapus Status Kesehatan ' . $stssehat);
+        }
 
         return $this->redirect(['index']);
     }

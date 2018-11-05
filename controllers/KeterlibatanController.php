@@ -65,10 +65,15 @@ class KeterlibatanController extends ControllerHelper
     public function actionCreate()
     {
         $model = new Keterlibatan();
-        $model->id_keterlibatan = $model::getNextId();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_keterlibatan]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id_keterlibatan = $model::getNextId();
+
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Menyimpan Keterlibatan ' . $model->deskripsi_keterlibatan);
+                return $this->redirect(['view', 'id' => $model->id_keterlibatan]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Menyimpan Keterlibatan ' . $model->deskripsi_keterlibatan);
         }
 
         return $this->render('create', [
@@ -87,8 +92,12 @@ class KeterlibatanController extends ControllerHelper
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_keterlibatan]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Memperbarui Keterlibatan ' . $model->deskripsi_keterlibatan);
+                return $this->redirect(['view', 'id' => $model->id_keterlibatan]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Memperbarui Keterlibatan ' . $model->deskripsi_keterlibatan);
         }
 
         return $this->render('update', [
@@ -105,8 +114,14 @@ class KeterlibatanController extends ControllerHelper
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        $model = $this->findModel($id);
+        $deskketerlibatan = $model->deskripsi_keterlibatan;
+        
+        if($model->delete()){
+            Yii::$app->session->setFlash('alert', 'Berhasil Menghapus Keterlibatan ' . $deskketerlibatan);
+        }else{
+            Yii::$app->session->setFlash('alert', 'Gagal Menghapus Keterlibatan ' . $deskketerlibatan);
+        }
         return $this->redirect(['index']);
     }
 

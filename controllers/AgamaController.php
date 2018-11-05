@@ -65,10 +65,15 @@ class AgamaController extends ControllerHelper
     public function actionCreate()
     {
         $model = new Agama();
-        $model->id_agama = $model::getNextId();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_agama]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id_agama = $model::getNextId();
+            
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Menyimpan Agama ' . $model->nama_agama);
+                return $this->redirect(['view', 'id' => $model->id_agama]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Menyimpan Agama ' . $model->nama_agama);
         }
 
         return $this->render('create', [
@@ -87,8 +92,12 @@ class AgamaController extends ControllerHelper
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_agama]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Memperbarui Agama ' . $model->nama_agama);
+                return $this->redirect(['view', 'id' => $model->id_agama]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Memperbarui Agama ' . $model->nama_agama);
         }
 
         return $this->render('update', [
@@ -105,8 +114,14 @@ class AgamaController extends ControllerHelper
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        $model = $this->findModel($id);
+        $namaagama = $model->nama_agama;
+        
+        if($model->delete()){
+            Yii::$app->session->setFlash('alert', 'Berhasil Menghapus Agama ' . $namaagama);
+        }else{
+            Yii::$app->session->setFlash('alert', 'Gagal Menghapus Agama ' . $namaagama);
+        }
         return $this->redirect(['index']);
     }
 

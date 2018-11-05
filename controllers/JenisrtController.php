@@ -65,10 +65,15 @@ class JenisrtController extends ControllerHelper
     public function actionCreate()
     {
         $model = new JenisRt();
-        $model->id_jenis_rt = $model::getNextId();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_jenis_rt]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id_jenis_rt = $model::getNextId();
+
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Menyimpan Jenis RT ' . $model->kriteria_rt);
+                return $this->redirect(['view', 'id' => $model->id_jenis_rt]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Menyimpan Jenis RT ' . $model->kriteria_rt);
         }
 
         return $this->render('create', [
@@ -87,8 +92,12 @@ class JenisrtController extends ControllerHelper
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_jenis_rt]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Memperbarui Jenis RT ' . $model->kriteria_rt);
+                return $this->redirect(['view', 'id' => $model->id_jenis_rt]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Memperbarui Jenis RT ' . $model->kriteria_rt);
         }
 
         return $this->render('update', [
@@ -105,7 +114,14 @@ class JenisrtController extends ControllerHelper
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $kriteriart = $model->kriteria_rt;
+        
+        if($model->delete()){
+            Yii::$app->session->setFlash('alert', 'Berhasil Menghapus Jenis RT ' . $kriteriart);
+        }else{
+            Yii::$app->session->setFlash('alert', 'Gagal Menghapus Jenis RT ' . $kriteriart);
+        }
 
         return $this->redirect(['index']);
     }

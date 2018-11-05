@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\StatusKesehatan */
 
-$this->title = $model->deskripsis_sts_sehat;
+$this->title = $model->deskripsi_sts_sehat;
 $this->params['breadcrumbs'][] = ['label' => 'Data Status Kesehatan', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            // 'id_sts_sehat',
+            'id_sts_sehat',
             'deskripsi_sts_sehat',
         ],
     ]) ?>

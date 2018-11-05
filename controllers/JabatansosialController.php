@@ -65,10 +65,15 @@ class JabatansosialController extends ControllerHelper
     public function actionCreate()
     {
         $model = new JabatanSosial();
-        $model->id_jbt_sosial = $model::getNextId();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_jbt_sosial]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id_jbt_sosial = $model::getNextId();
+
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Menyimpan Jabatan Sosial ' . $model->deskripsi_jbt_sosial);
+                return $this->redirect(['view', 'id' => $model->id_jbt_sosial]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Menyimpan Jabatan Sosial ' . $model->deskripsi_jbt_sosial);
         }
 
         return $this->render('create', [
@@ -87,8 +92,12 @@ class JabatansosialController extends ControllerHelper
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_jbt_sosial]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Memperbarui Jabatan Sosial ' . $model->deskripsi_jbt_sosial);
+                return $this->redirect(['view', 'id' => $model->id_jbt_sosial]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Memperbarui Jabatan Sosial ' . $model->deskripsi_jbt_sosial);
         }
 
         return $this->render('update', [
@@ -105,7 +114,14 @@ class JabatansosialController extends ControllerHelper
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $jbtsosial = $model->deskripsi_jbt_sosial;
+        
+        if($model->delete()){
+            Yii::$app->session->setFlash('alert', 'Berhasil Menghapus Jabatan Sosial ' . $jbtsosial);
+        }else{
+            Yii::$app->session->setFlash('alert', 'Gagal Menghapus Jabatan Sosial ' . $jbtsosial);
+        }
 
         return $this->redirect(['index']);
     }

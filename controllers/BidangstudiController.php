@@ -65,10 +65,15 @@ class BidangstudiController extends ControllerHelper
     public function actionCreate()
     {
         $model = new BidangStudi();
-        $model->id_bidstudi = $model::getNextId();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_bidstudi]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id_bidstudi = $model::getNextId();
+            
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Menyimpan Bidang Studi ' . $model->deskripsi_bidstudi);
+                return $this->redirect(['view', 'id' => $model->id_bidstudi]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Menyimpan Bidang Studi ' . $model->deskripsi_bidstudi);
         }
 
         return $this->render('create', [
@@ -87,8 +92,12 @@ class BidangstudiController extends ControllerHelper
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_bidstudi]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Memperbarui Bidang Studi ' . $model->deskripsi_bidstudi);
+                return $this->redirect(['view', 'id' => $model->id_bidstudi]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Memperbarui Bidang Studi ' . $model->deskripsi_bidstudi);
         }
 
         return $this->render('update', [
@@ -105,8 +114,14 @@ class BidangstudiController extends ControllerHelper
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        $model = $this->findModel($id);
+        $bidstudi = $model->deskripsi_bidstudi;
+        
+        if($model->delete()){
+            Yii::$app->session->setFlash('alert', 'Berhasil Menghapus Bidang Studi ' . $bidstudi);
+        }else{
+            Yii::$app->session->setFlash('alert', 'Gagal Menghapus Bidang Studi ' . $bidstudi);
+        }
         return $this->redirect(['index']);
     }
 

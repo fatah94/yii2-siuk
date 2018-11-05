@@ -65,10 +65,15 @@ class PekerjaanController extends ControllerHelper
     public function actionCreate()
     {
         $model = new Pekerjaan();
-        $model->id_pekerjaan = $model::getNextId();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_pekerjaan]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id_pekerjaan = $model::getNextId();
+
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Menyimpan Pekerjaan ' . $model->deskripsi_pekerjaan);
+                return $this->redirect(['view', 'id' => $model->id_pekerjaan]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Menyimpan Pekerjaan ' . $model->deskripsi_pekerjaan);
         }
 
         return $this->render('create', [
@@ -87,8 +92,12 @@ class PekerjaanController extends ControllerHelper
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_pekerjaan]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Memperbarui Pekerjaan ' . $model->deskripsi_pekerjaan);
+                return $this->redirect(['view', 'id' => $model->id_pekerjaan]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Memperbarui Pekerjaan ' . $model->deskripsi_pekerjaan);
         }
 
         return $this->render('update', [
@@ -105,7 +114,14 @@ class PekerjaanController extends ControllerHelper
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $pekerjaan = $model->deskripsi_pekerjaan;
+        
+        if($model->delete()){
+            Yii::$app->session->setFlash('alert', 'Berhasil Menghapus Pekerjaan ' . $pekerjaan);
+        }else{
+            Yii::$app->session->setFlash('alert', 'Gagal Menghapus Pekerjaan ' . $pekerjaan);
+        }
 
         return $this->redirect(['index']);
     }

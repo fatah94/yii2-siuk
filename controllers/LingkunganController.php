@@ -79,10 +79,15 @@ class LingkunganController extends ControllerHelper
     public function actionCreate()
     {
         $model = new Lingkungan();
-        $model->id_lingkungan = $model::getNextId();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_lingkungan]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id_lingkungan = $model::getNextId();
+
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Menyimpan Lingkungan ' . $model->nama_lingkungan);
+                return $this->redirect(['view', 'id' => $model->id_lingkungan]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Menyimpan Lingkungan ' . $model->nama_lingkungan);
         }
 
         return $this->render('create', [
@@ -101,8 +106,12 @@ class LingkunganController extends ControllerHelper
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_lingkungan]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Memperbarui Lingkungan ' . $model->nama_lingkungan);
+                return $this->redirect(['view', 'id' => $model->id_lingkungan]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Memperbarui Lingkungan ' . $model->nama_lingkungan);
         }
 
         return $this->render('update', [
@@ -119,7 +128,14 @@ class LingkunganController extends ControllerHelper
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $namalingkungan = $model->nama_lingkungan;
+        
+        if($model->delete()){
+            Yii::$app->session->setFlash('alert', 'Berhasil Menghapus Lingkungan ' . $namalingkungan);
+        }else{
+            Yii::$app->session->setFlash('alert', 'Gagal Menghapus Lingkungan ' . $namalingkungan);
+        }
 
         return $this->redirect(['index']);
     }

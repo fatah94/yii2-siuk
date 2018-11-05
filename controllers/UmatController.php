@@ -41,6 +41,7 @@ class UmatController extends ControllerHelper
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'jenis_kelamin' => Umat::getListJenKel(),
         ]);
     }
 
@@ -97,8 +98,10 @@ class UmatController extends ControllerHelper
     
             if ($model->save()) {
                 $idkk = ($model->id_keluarga==0) ? $model->id_umat : $model->id_keluarga;
+                Yii::$app->session->setFlash('alert', 'Berhasil Menyimpan Umat');
                 return $this->redirect(['viewkk', 'id' => $idkk]);
             }
+            Yii::$app->session->setFlash('alert', 'Gagal Menyimpan Umat');
         }
 
         $datakk = '';
@@ -129,8 +132,10 @@ class UmatController extends ControllerHelper
             $model->tgl_update = date('Y-m-d H:i:s');
     
             if ($model->save()) {
+                Yii::$app->session->setFlash('alert', 'Berhasil Memperbarui Umat');
                 return $this->redirect(['view', 'id' => $model->id_umat]);
             }
+            Yii::$app->session->setFlash('alert', 'Gagal Memperbarui Umat');
         }
 
         return $this->render('update', [

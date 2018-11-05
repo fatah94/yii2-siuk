@@ -65,10 +65,15 @@ class GolongandarahController extends ControllerHelper
     public function actionCreate()
     {
         $model = new GolonganDarah();
-        $model->id_goldar = $model::getNextId();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_goldar]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id_goldar = $model::getNextId();
+
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Menyimpan Golongan Darah ' . $model->deskripsi_goldar);
+                return $this->redirect(['view', 'id' => $model->id_goldar]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Menyimpan Golongan Darah ' . $model->deskripsi_goldar);
         }
 
         return $this->render('create', [
@@ -87,9 +92,14 @@ class GolongandarahController extends ControllerHelper
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_goldar]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Memperbarui Golongan Darah ' . $model->deskripsi_goldar);
+                return $this->redirect(['view', 'id' => $model->id_goldar]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Memperbarui Golongan Darah ' . $model->deskripsi_goldar);
         }
+
 
         return $this->render('update', [
             'model' => $model,
@@ -105,7 +115,14 @@ class GolongandarahController extends ControllerHelper
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $goldar = $model->deskripsi_goldar;
+        
+        if($model->delete()){
+            Yii::$app->session->setFlash('alert', 'Berhasil Menghapus Golongan Darah ' . $goldar);
+        }else{
+            Yii::$app->session->setFlash('alert', 'Gagal Menghapus Golongan Darah ' . $goldar);
+        }
 
         return $this->redirect(['index']);
     }

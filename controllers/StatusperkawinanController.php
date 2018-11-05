@@ -65,10 +65,15 @@ class StatusperkawinanController extends ControllerHelper
     public function actionCreate()
     {
         $model = new StatusPerkawinan();
-        $model->id_sts_kawin = $model::getNextId();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_sts_kawin]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id_sts_kawin = $model::getNextId();
+
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Menyimpan Status Kawin ' . $model->deskripsi_sts_kawin);
+                return $this->redirect(['view', 'id' => $model->id_sts_kawin]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Menyimpan Status Kawin ' . $model->deskripsi_sts_kawin);
         }
 
         return $this->render('create', [
@@ -87,8 +92,12 @@ class StatusperkawinanController extends ControllerHelper
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_sts_kawin]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Memperbarui Status Kawin ' . $model->deskripsi_sts_kawin);
+                return $this->redirect(['view', 'id' => $model->id_sts_kawin]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Memperbarui Status Kawin ' . $model->deskripsi_sts_kawin);
         }
 
         return $this->render('update', [
@@ -105,7 +114,14 @@ class StatusperkawinanController extends ControllerHelper
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $stskawin = $model->deskripsi_sts_kawin;
+        
+        if($model->delete()){
+            Yii::$app->session->setFlash('alert', 'Berhasil Menghapus Status Perkawinan ' . $stskawin);
+        }else{
+            Yii::$app->session->setFlash('alert', 'Gagal Menghapus Status Perkawinan ' . $stskawin);
+        }
 
         return $this->redirect(['index']);
     }

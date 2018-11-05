@@ -65,10 +65,15 @@ class StatusgerejawiController extends ControllerHelper
     public function actionCreate()
     {
         $model = new StatusGerejawi();
-        $model->id_sts_gerejawi = $model::getNextId();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_sts_gerejawi]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id_sts_gerejawi = $model::getNextId();
+
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Menyimpan Status Gerejawi ' . $model->deskripsi_sts_gerejawi);
+                return $this->redirect(['view', 'id' => $model->id_sts_gerejawi]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Menyimpan Status Gerejawi ' . $model->deskripsi_sts_gerejawi);
         }
 
         return $this->render('create', [
@@ -87,8 +92,12 @@ class StatusgerejawiController extends ControllerHelper
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_sts_gerejawi]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Memperbarui Status Gerejawi ' . $model->deskripsi_sts_gerejawi);
+                return $this->redirect(['view', 'id' => $model->id_sts_gerejawi]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Memperbarui Status Gerejawi ' . $model->deskripsi_sts_gerejawi);
         }
 
         return $this->render('update', [
@@ -105,7 +114,14 @@ class StatusgerejawiController extends ControllerHelper
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $stsgerejawi = $model->deskripsi_sts_gerejawi;
+        
+        if($model->delete()){
+            Yii::$app->session->setFlash('alert', 'Berhasil Menghapus Status Gerejawi ' . $stsgerejawi);
+        }else{
+            Yii::$app->session->setFlash('alert', 'Gagal Menghapus Status Gerejawi ' . $stsgerejawi);
+        }
 
         return $this->redirect(['index']);
     }

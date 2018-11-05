@@ -65,10 +65,15 @@ class WaktubaptisController extends ControllerHelper
     public function actionCreate()
     {
         $model = new WaktuBaptis();
-        $model->id_wkt_baptis = $model::getNextId();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_wkt_baptis]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id_wkt_baptis = $model::getNextId();
+
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Menyimpan Waktu Baptis ' . $model->deskripsi_wkt_baptis);
+                return $this->redirect(['view', 'id' => $model->id_wkt_baptis]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Menyimpan Waktu Baptis ' . $model->deskripsi_wkt_baptis);
         }
 
         return $this->render('create', [
@@ -87,8 +92,12 @@ class WaktubaptisController extends ControllerHelper
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_wkt_baptis]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Memperbarui Waktu Baptis ' . $model->deskripsi_wkt_baptis);
+                return $this->redirect(['view', 'id' => $model->id_wkt_baptis]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Memperbarui Waktu Baptis ' . $model->deskripsi_wkt_baptis);
         }
 
         return $this->render('update', [
@@ -105,7 +114,14 @@ class WaktubaptisController extends ControllerHelper
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $wktbaptis = $model->deskripsi_wkt_baptis;
+        
+        if($model->delete()){
+            Yii::$app->session->setFlash('alert', 'Berhasil Menghapus Waktu Baptis ' . $wktbaptis);
+        }else{
+            Yii::$app->session->setFlash('alert', 'Gagal Menghapus Waktu Baptis ' . $wktbaptis);
+        }
 
         return $this->redirect(['index']);
     }

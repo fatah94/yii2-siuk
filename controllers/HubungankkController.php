@@ -65,10 +65,15 @@ class HubungankkController extends ControllerHelper
     public function actionCreate()
     {
         $model = new HubunganKk();
-        $model->id_hub_kk = $model::getNextId();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_hub_kk]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id_hub_kk = $model::getNextId();
+
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Menyimpan Hubungan Kepala Keluarga ' . $model->deskripsi_hub_kk);
+                return $this->redirect(['view', 'id' => $model->id_hub_kk]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Menyimpan Hubungan Kepala Keluarga ' . $model->deskripsi_hub_kk);
         }
 
         return $this->render('create', [
@@ -87,8 +92,12 @@ class HubungankkController extends ControllerHelper
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_hub_kk]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Memperbarui Hubungan Kepala Keluarga ' . $model->deskripsi_hub_kk);
+                return $this->redirect(['view', 'id' => $model->id_hub_kk]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Memperbarui Hubungan Kepala Keluarga ' . $model->deskripsi_hub_kk);
         }
 
         return $this->render('update', [
@@ -105,7 +114,14 @@ class HubungankkController extends ControllerHelper
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $hubkk = $model->deskripsi_hub_kk;
+        
+        if($model->delete()){
+            Yii::$app->session->setFlash('alert', 'Berhasil Menghapus Hubungan KK ' . $hubkk);
+        }else{
+            Yii::$app->session->setFlash('alert', 'Gagal Menghapus Hubungan KK ' . $hubkk);
+        }
 
         return $this->redirect(['index']);
     }

@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "umat".
@@ -140,296 +141,129 @@ class Umat extends \yii\db\ActiveRecord
             1 => "Laki - laki",
             2 => "Perempuan",
         ];
-
-        if($id===NULL){
-            return $list;
-        }else{
-            return isset($list[$id]) ? $list[$id] : '';
-        }
+        return self::getList($id, $list);
     }
 
     public static function getListKeuskupan($id = Null){
         $row = Keuskupan::find()->all();
-
-        $list = [];
-        foreach($row as $i => $value){
-            $list[$value->id_keuskupan] = $value->nama_keuskupan;
-        }
-
-        if($id === NULL){
-            return $list;
-        }else{
-            return isset($list[$id]) ? $list[$id] : '';
-        }
+        $list = ArrayHelper::map($row, 'id_keuskupan', 'nama_keuskupan');
+        return self::getList($id, $list);
     }
 
     public static function getListParoki($id = Null){
         $row = Paroki::find()->all();
-
-        $list = [];
-        foreach($row as $i => $value){
-            $list[$value->id_paroki] = $value->nama_paroki;
-        }
-
-        if($id === NULL){
-            return $list;
-        }else{
-            return isset($list[$id]) ? $list[$id] : '';
-        }
+        $list = ArrayHelper::map($row, 'id_paroki', 'nama_paroki');
+        return self::getList($id, $list);
     }
 
     public static function getListWilayah($id = Null){
         $row = wilayah::find()->all();
-
-        $list = [];
-        foreach($row as $i => $value){
-            $list[$value->id_wilayah] = $value->nama_wilayah;
-        }
-
-        if($id === NULL){
-            return $list;
-        }else{
-            return isset($list[$id]) ? $list[$id] : '';
-        }
+        $list = ArrayHelper::map($row, 'id_wilayah', 'nama_wilayah');
+        return self::getList($id, $list);
     }
 
     public static function getListLingkungan($id = Null){
         $row = Lingkungan::find()->all();
-
-        $list = [];
-        foreach($row as $i => $value){
-            $list[$value->id_lingkungan] = $value->nama_lingkungan;
-        }
-
-        if($id === NULL){
-            return $list;
-        }else{
-            return isset($list[$id]) ? $list[$id] : '';
-        }
+        $list = ArrayHelper::map($row, 'id_lingkungan', 'nama_lingkungan');
+        return self::getList($id, $list);
     }
 
     public static function getListEkonomi($id = Null){
         $row = Ekonomi::find()->all();
-
-        $list = [];
-        foreach($row as $i => $value){
-            $list[$value->id_ekonomi] = $value->kriteria_ekonomi;
-        }
-
-        if($id === NULL){
-            return $list;
-        }else{
-            return isset($list[$id]) ? $list[$id] : '';
-        }
+        $list = ArrayHelper::map($row, 'id_ekonomi', 'kriteria_ekonomi');
+        return self::getList($id, $list);
     }
 
     public static function getListJenisRt($id = Null){
         $row = JenisRt::find()->all();
-
-        $list = [];
-        foreach($row as $i => $value){
-            $list[$value->id_jenis_rt] = $value->kriteria_rt;
-        }
-
-        if($id === NULL){
-            return $list;
-        }else{
-            return isset($list[$id]) ? $list[$id] : '';
-        }
+        $list = ArrayHelper::map($row, 'id_jenis_rt', 'kriteria_rt');
+        return self::getList($id, $list);
     }
 
     public static function getListAgama($id = Null){
         $row = Agama::find()->all();
-
-        $list = [];
-        foreach($row as $i => $value){
-            $list[$value->id_agama] = $value->nama_agama;
-        }
-
-        if($id === NULL){
-            return $list;
-        }else{
-            return isset($list[$id]) ? $list[$id] : '';
-        }
+        $list = ArrayHelper::map($row, 'id_agama', 'nama_agama');
+        return self::getList($id, $list);
     }
 
     public static function getListHubKk($id = Null){
         $row = HubunganKk::find()->all();
-
-        $list = [];
-        foreach($row as $i => $value){
-            $list[$value->id_hub_kk] = $value->deskripsi_hub_kk;
-        }
-
-        if($id === NULL){
-            return $list;
-        }else{
-            return isset($list[$id]) ? $list[$id] : '';
-        }
+        $list = ArrayHelper::map($row, 'id_hub_kk', 'deskripsi_hub_kk');
+        return self::getList($id, $list);
     }
 
     public static function getListSuku($id = Null){
         $row = SukuBangsa::find()->all();
-
-        $list = [];
-        foreach($row as $i => $value){
-            $list[$value->id_suku] = $value->deskripsi_suku;
-        }
-
-        if($id === NULL){
-            return $list;
-        }else{
-            return isset($list[$id]) ? $list[$id] : '';
-        }
+        $list = ArrayHelper::map($row, 'id_suku', 'deskripsi_suku');
+        return self::getList($id, $list);
     }
 
     public static function getListPendidikan($id = Null){
         $row = Pendidikan::find()->all();
-
-        $list = [];
-        foreach($row as $i => $value){
-            $list[$value->id_pendidikan] = $value->deskripsi_pendidikan;
-        }
-
-        if($id === NULL){
-            return $list;
-        }else{
-            return isset($list[$id]) ? $list[$id] : '';
-        }
+        $list = ArrayHelper::map($row, 'id_pendidikan', 'deskripsi_pendidikan');
+        return self::getList($id, $list);
     }
 
     public static function getListBidStudi($id = Null){
         $row = BidangStudi::find()->all();
-
-        $list = [];
-        foreach($row as $i => $value){
-            $list[$value->id_bidstudi] = $value->deskripsi_bidstudi;
-        }
-
-        if($id === NULL){
-            return $list;
-        }else{
-            return isset($list[$id]) ? $list[$id] : '';
-        }
+        $list = ArrayHelper::map($row, 'id_bidstudi', 'deskripsi_bidstudi');
+        return self::getList($id, $list);
     }
 
     public static function getListPekerjaan($id = Null){
         $row = Pekerjaan::find()->all();
-
-        $list = [];
-        foreach($row as $i => $value){
-            $list[$value->id_pekerjaan] = $value->deskripsi_pekerjaan;
-        }
-
-        if($id === NULL){
-            return $list;
-        }else{
-            return isset($list[$id]) ? $list[$id] : '';
-        }
+        $list = ArrayHelper::map($row, 'id_pekerjaan', 'deskripsi_pekerjaan');
+        return self::getList($id, $list);
     }
 
     public static function getListGolDar($id = Null){
         $row = GolonganDarah::find()->all();
-
-        $list = [];
-        foreach($row as $i => $value){
-            $list[$value->id_goldar] = $value->deskripsi_goldar;
-        }
-
-        if($id === NULL){
-            return $list;
-        }else{
-            return isset($list[$id]) ? $list[$id] : '';
-        }
+        $list = ArrayHelper::map($row, 'id_goldar', 'deskripsi_goldar');
+        return self::getList($id, $list);
     }
 
     public static function getListStsSehat($id = Null){
         $row = StatusKesehatan::find()->all();
-
-        $list = [];
-        foreach($row as $i => $value){
-            $list[$value->id_sts_sehat] = $value->deskripsi_sts_sehat;
-        }
-
-        if($id === NULL){
-            return $list;
-        }else{
-            return isset($list[$id]) ? $list[$id] : '';
-        }
+        $list = ArrayHelper::map($row, 'id_sts_sehat', 'deskripsi_sts_sehat');
+        return self::getList($id, $list);
     }
 
     public static function getListWktBaptis($id = Null){
         $row = WaktuBaptis::find()->all();
-
-        $list = [];
-        foreach($row as $i => $value){
-            $list[$value->id_wkt_baptis] = $value->deskripsi_wkt_baptis;
-        }
-
-        if($id === NULL){
-            return $list;
-        }else{
-            return isset($list[$id]) ? $list[$id] : '';
-        }
+        $list = ArrayHelper::map($row, 'id_wkt_baptis', 'deskripsi_wkt_baptis');
+        return self::getList($id, $list);
     }
 
     public static function getListStsKawin($id = Null){
         $row = StatusPerkawinan::find()->all();
-
-        $list = [];
-        foreach($row as $i => $value){
-            $list[$value->id_sts_kawin] = $value->deskripsi_sts_kawin;
-        }
-
-        if($id === NULL){
-            return $list;
-        }else{
-            return isset($list[$id]) ? $list[$id] : '';
-        }
+        $list = ArrayHelper::map($row, 'id_sts_kawin', 'deskripsi_sts_kawin');
+        return self::getList($id, $list);
     }
 
     public static function getListJbtSosial($id = Null){
         $row = JabatanSosial::find()->all();
-
-        $list = [];
-        foreach($row as $i => $value){
-            $list[$value->id_jbt_sosial] = $value->deskripsi_jbt_sosial;
-        }
-
-        if($id === NULL){
-            return $list;
-        }else{
-            return isset($list[$id]) ? $list[$id] : '';
-        }
+        $list = ArrayHelper::map($row, 'id_jbt_sosial', 'deskripsi_jbt_sosial');
+        return self::getList($id, $list);
     }
 
     public static function getListStsGerejawi($id = Null){
         $row = StatusGerejawi::find()->all();
-
-        $list = [];
-        foreach($row as $i => $value){
-            $list[$value->id_sts_gerejawi] = $value->deskripsi_sts_gerejawi;
-        }
-
-        if($id === NULL){
-            return $list;
-        }else{
-            return isset($list[$id]) ? $list[$id] : '';
-        }
+        $list = ArrayHelper::map($row, 'id_sts_gerejawi', 'deskripsi_sts_gerejawi');
+        return self::getList($id, $list);
     }
 
     public static function getListKeterlibatan($id = Null){
         $row = Keterlibatan::find()->all();
+        $list = ArrayHelper::map($row, 'id_keterlibatan', 'deskripsi_keterlibatan');
+        return self::getList($id, $list);
+    }
 
-        $list = [];
-        foreach($row as $i => $value){
-            $list[$value->id_keterlibatan] = $value->deskripsi_keterlibatan;
-        }
-
+    public static function getList($id, $list){
         if($id === NULL){
             return $list;
         }else{
             return isset($list[$id]) ? $list[$id] : '';
         }
     }
+    
 }

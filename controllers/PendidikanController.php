@@ -65,12 +65,16 @@ class PendidikanController extends ControllerHelper
     public function actionCreate()
     {
         $model = new Pendidikan();
-        $model->id_pendidikan = $model::getNextId();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_pendidikan]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id_pendidikan = $model::getNextId();
+
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Menyimpan Pendidikan ' . $model->deskripsi_pendidikan);
+                return $this->redirect(['view', 'id' => $model->id_pendidikan]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Menyimpan Pendidikan ' . $model->deskripsi_pendidikan);
         }
-
         return $this->render('create', [
             'model' => $model,
         ]);
@@ -87,8 +91,12 @@ class PendidikanController extends ControllerHelper
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_pendidikan]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Memperbarui Pendidikan ' . $model->deskripsi_pendidikan);
+                return $this->redirect(['view', 'id' => $model->id_pendidikan]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Memperbarui Pendidikan ' . $model->deskripsi_pendidikan);
         }
 
         return $this->render('update', [
@@ -105,7 +113,14 @@ class PendidikanController extends ControllerHelper
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $pendidikan = $model->deskripsi_pendidikan;
+        
+        if($model->delete()){
+            Yii::$app->session->setFlash('alert', 'Berhasil Menghapus Pendidikan ' . $pendidikan);
+        }else{
+            Yii::$app->session->setFlash('alert', 'Gagal Menghapus Pendidikan ' . $pendidikan);
+        }
 
         return $this->redirect(['index']);
     }

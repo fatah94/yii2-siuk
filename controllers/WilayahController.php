@@ -65,10 +65,15 @@ class WilayahController extends ControllerHelper
     public function actionCreate()
     {
         $model = new Wilayah();
-        $model->id_wilayah = $model::getNextId();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_wilayah]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id_wilayah = $model::getNextId();
+
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Menyimpan Wilayah ' . $model->nama_wilayah);
+                return $this->redirect(['view', 'id' => $model->id_wilayah]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Menyimpan Wilayah ' . $model->nama_wilayah);
         }
 
         return $this->render('create', [
@@ -87,8 +92,12 @@ class WilayahController extends ControllerHelper
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_wilayah]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Memperbarui Wilayah ' . $model->nama_wilayah);
+                return $this->redirect(['view', 'id' => $model->id_wilayah]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Memperbarui Wilayah ' . $model->nama_wilayah);
         }
 
         return $this->render('update', [
@@ -105,7 +114,14 @@ class WilayahController extends ControllerHelper
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $namaWilayah = $model->nama_wilayah;
+        
+        if($model->delete()){
+            Yii::$app->session->setFlash('alert', 'Berhasil Menghapus ' . $namaWilayah);
+        }else{
+            Yii::$app->session->setFlash('alert', 'Gagal Menghapus ' . $namaWilayah);
+        }
 
         return $this->redirect(['index']);
     }

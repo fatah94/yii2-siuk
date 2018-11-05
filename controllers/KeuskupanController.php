@@ -65,12 +65,17 @@ class KeuskupanController extends ControllerHelper
     public function actionCreate()
     {
         $model = new Keuskupan();
-        $model->id_keuskupan = $model::getNextId();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_keuskupan]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->id_keuskupan = $model::getNextId();
+
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Menyimpan Keuskupan ' . $model->nama_keuskupan);
+                return $this->redirect(['view', 'id' => $model->id_keuskupan]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Menyimpan Keuskupan ' . $model->nama_keuskupan);
         }
-
+        
         return $this->render('create', [
             'model' => $model,
         ]);
@@ -87,8 +92,12 @@ class KeuskupanController extends ControllerHelper
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_keuskupan]);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()){
+                Yii::$app->session->setFlash('alert', 'Berhasil Memperbarui Keuskupan ' . $model->nama_keuskupan);
+                return $this->redirect(['view', 'id' => $model->id_keuskupan]);
+            }
+            Yii::$app->session->setFlash('alert', 'Gagal Memperbarui Keuskupan ' . $model->nama_keuskupan);
         }
 
         return $this->render('update', [
@@ -105,7 +114,14 @@ class KeuskupanController extends ControllerHelper
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $namakeuskupan = $model->nama_keuskupan;
+        
+        if($model->delete()){
+            Yii::$app->session->setFlash('alert', 'Berhasil Menghapus Keuskupan ' . $namakeuskupan);
+        }else{
+            Yii::$app->session->setFlash('alert', 'Gagal Menghapus Keuskupan ' . $namakeuskupan);
+        }
 
         return $this->redirect(['index']);
     }
