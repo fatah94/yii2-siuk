@@ -157,7 +157,7 @@ class Umat extends \yii\db\ActiveRecord
     }
 
     public static function getListWilayah($id = Null){
-        $row = wilayah::find()->all();
+        $row = Wilayah::find()->all();
         $list = ArrayHelper::map($row, 'id_wilayah', 'nama_wilayah');
         return self::getList($id, $list);
     }

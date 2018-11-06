@@ -57,7 +57,7 @@ class UmatController extends ControllerHelper
 
         return $this->render('view', [
             'model' => $model,
-            'datakk' => $this->getKepalaKeluarga($model['id_umat'], $model['id_keluarga']),
+            'datakk' => $this->findModel(['no_urut'=> 1, 'np' => $model->np]),
         ]);
     }
 
@@ -65,7 +65,7 @@ class UmatController extends ControllerHelper
     {
         $searchModel = new UmatSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $id);
-        $data = $this->findModel($id);
+        $data = Umat::findOne(['np' => $id]);
 
         if(empty($data)){
             return $this->redirect(['index']);
@@ -89,24 +89,18 @@ class UmatController extends ControllerHelper
             $model->load(Yii::$app->request->post());
             $model->tgl_update = date('Y-m-d H:i:s');
             $model->tahun_mulai_tinggal = substr($model->tahun_mulai_tinggal,0,4);
-
-            if(isset($_GET['id'])){
-                $model->id_keluarga = (int)$_GET['id'];
-            }else{
-                $model->id_hub_kk = '01';
-            }
     
             if ($model->save()) {
-                $idkk = ($model->id_keluarga==0) ? $model->id_umat : $model->id_keluarga;
-                Yii::$app->session->setFlash('alert', 'Berhasil Menyimpan Umat');
-                return $this->redirect(['viewkk', 'id' => $idkk]);
+                Yii::$app->session->setFlash('alert', 'Berhasil Menyimpan Data '  . $model->nama_anggota_rt);
+                return $this->redirect(['viewkk', 'id' => $model->np]);
             }
-            Yii::$app->session->setFlash('alert', 'Gagal Menyimpan Umat');
+            Yii::$app->session->setFlash('alert', 'Gagal Menyimpan Data '  . $model->nama_anggota_rt);
         }
 
         $datakk = '';
         if(isset($_GET['id'])){
-            $datakk = $this->findModel((int)$_GET['id']);
+            $model->np = (int)$_GET['id'];
+            $datakk = $this->findModel(['no_urut'=> 1, 'np' => $model->np]);
         }
 
         return $this->render('create', [
@@ -132,14 +126,14 @@ class UmatController extends ControllerHelper
             $model->tgl_update = date('Y-m-d H:i:s');
     
             if ($model->save()) {
-                Yii::$app->session->setFlash('alert', 'Berhasil Memperbarui Umat');
+                Yii::$app->session->setFlash('alert', 'Berhasil Memperbarui Data ' . $model->nama_anggota_rt);
                 return $this->redirect(['view', 'id' => $model->id_umat]);
             }
-            Yii::$app->session->setFlash('alert', 'Gagal Memperbarui Umat');
+            Yii::$app->session->setFlash('alert', 'Gagal Memperbarui Data '  . $model->nama_anggota_rt);
         }
 
         return $this->render('update', [
-            'datakk' => $this->getKepalaKeluarga($model['id_umat'], $model['id_keluarga']),
+            'datakk' => $this->findModel(['no_urut'=> 1, 'np' => $model->np]),
             'model' => $model,
         ]);
     }
@@ -153,19 +147,25 @@ class UmatController extends ControllerHelper
      */
     public function actionDelete($id)
     {
-        $data = $this->findModel($id);
-        $id = $data->id_keluarga;
-        $data->delete();
+        $model = $this->findModel($id);
+        
+        if($model->delete()){
+            Yii::$app->session->setFlash('alert', 'Berhasil Menghapus Umat ' . $model->nama_anggota_rt);
+        }else{
+            Yii::$app->session->setFlash('alert', 'Gagal Menghapus Umat ' . $model->nama_anggota_rt);
+        }
 
-        return $this->redirect(['viewkk', 'id' => $id]);
+        return $this->redirect(['viewkk', 'id' => $model->np]);
     }
 
     public function actionDeletekk($id)
     {
-        $models = Umat::find()->where(['id_umat' => $id])->orWhere(['id_keluarga'=> $id])->all();
+        $model = $this->findModel(['no_urut'=> 1, 'np' => $id]);
 
-        foreach ($models as $model) {
-            $model->delete();
+        if(Umat::deleteAll(['np' => $id])){
+            Yii::$app->session->setFlash('alert', 'Berhasil Menghapus Data Umat Keluarga ' . $model->nama_anggota_rt);
+        }else{
+            Yii::$app->session->setFlash('alert', 'Gagal Menghapus Data Umat Keluarga ' . $model->nama_anggota_rt);
         }
 
         return $this->redirect(['index']);
@@ -186,9 +186,4 @@ class UmatController extends ControllerHelper
         // throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    protected function getKepalaKeluarga($id_umat, $id_keluarga)
-    {
-        $searchid = ($id_keluarga==0) ? $id_umat : $id_keluarga;
-        return $this->findModel($searchid);
-    }
 }

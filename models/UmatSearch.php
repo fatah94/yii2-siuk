@@ -68,10 +68,9 @@ class UmatSearch extends Umat
             ->andFilterWhere(['like', 'notum', $this->notum]);
 
             if($id == NULL){
-                $query->andWhere("id_hub_kk = 01");
+                $query->andWhere("no_urut = 1");
             }else{
-                $query->orWhere(['id_umat' => $id])
-                    ->orWhere(['id_keluarga' => $id]);
+                $query->orWhere(['np' => $id]);
             }    
 
             if($attr != NULL){

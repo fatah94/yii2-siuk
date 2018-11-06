@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 $this->title = 'Update Umat: ' . $model->nama_anggota_rt;
 $this->params['breadcrumbs'][] = ['label' => 'Data Umat', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => 'Keluarga '.$datakk['nama_anggota_rt'], 'url' => ['viewkk', 'id' => $datakk['id_umat']]];
+$this->params['breadcrumbs'][] = ['label' => 'Keluarga '.$datakk['nama_anggota_rt'], 'url' => ['viewkk', 'id' => $datakk['np']]];
 $this->params['breadcrumbs'][] = ['label' => $model->nama_anggota_rt, 'url' => ['view', 'id' => $model->id_umat]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>

@@ -8,7 +8,7 @@ use yii\widgets\DetailView;
 
 $this->title = $model->nama_anggota_rt;
 $this->params['breadcrumbs'][] = ['label' => 'Data Umat', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => 'Keluarga '.$datakk['nama_anggota_rt'], 'url' => ['viewkk', 'id' => $datakk['id_umat']]];
+$this->params['breadcrumbs'][] = ['label' => 'Keluarga '.$datakk['nama_anggota_rt'], 'url' => ['viewkk', 'id' => $datakk['np']]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="umat-view">
