@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "lingkungan".
@@ -55,7 +56,11 @@ class Lingkungan extends \yii\db\ActiveRecord
         ];
     }
 
-    public static function getListWilayah($id = Null){
-        return Umat::getListWilayah($id);
+    public function getWilayah(){
+        return $this->hasOne(Wilayah::className(), ['id_wilayah' => 'id_wilayah']);
+    }
+
+    public static function getListWilayah(){
+        return ArrayHelper::map(Wilayah::find()->all(), 'id_wilayah', 'nama_wilayah');
     }
 }

@@ -65,7 +65,7 @@ class UmatController extends ControllerHelper
     {
         $searchModel = new UmatSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $id);
-        $data = Umat::findOne(['np' => $id]);
+        $data = Umat::findOne(['no_urut'=> 1, 'np' => $id]);
 
         if(empty($data)){
             return $this->redirect(['index']);

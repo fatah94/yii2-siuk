@@ -39,9 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'lingk_kontak',
             [
                 'attribute' => 'id_wilayah',
-                'value' => function ($data) {
-                    return $data::getListWilayah($data->id_wilayah, TRUE);
-                },
+                'value' => 'wilayah.nama_wilayah',
             ],
 
             ['class' => 'yii\grid\ActionColumn'],

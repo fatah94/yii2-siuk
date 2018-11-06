@@ -28,9 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'nama_anggota_rt',
             [
                 'attribute' => 'id_agama',
-                'value' => function ($data) {
-                    return $data::getListAgama($data->id_agama, TRUE);
-                },
+                'value' => 'agama.nama_agama',
             ],
             [
                 'class' => 'yii\grid\DataColumn',

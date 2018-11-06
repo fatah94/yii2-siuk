@@ -146,116 +146,97 @@ class Umat extends \yii\db\ActiveRecord
 
     public static function getListKeuskupan($id = Null){
         $row = Keuskupan::find()->all();
-        $list = ArrayHelper::map($row, 'id_keuskupan', 'nama_keuskupan');
-        return self::getList($id, $list);
+        return  ArrayHelper::map($row, 'id_keuskupan', 'nama_keuskupan');
     }
 
     public static function getListParoki($id = Null){
         $row = Paroki::find()->all();
-        $list = ArrayHelper::map($row, 'id_paroki', 'nama_paroki');
-        return self::getList($id, $list);
+        return  ArrayHelper::map($row, 'id_paroki', 'nama_paroki');
     }
 
     public static function getListWilayah($id = Null){
         $row = Wilayah::find()->all();
-        $list = ArrayHelper::map($row, 'id_wilayah', 'nama_wilayah');
-        return self::getList($id, $list);
+        return  ArrayHelper::map($row, 'id_wilayah', 'nama_wilayah');
     }
 
     public static function getListLingkungan($id = Null){
         $row = Lingkungan::find()->all();
-        $list = ArrayHelper::map($row, 'id_lingkungan', 'nama_lingkungan');
-        return self::getList($id, $list);
+        return  ArrayHelper::map($row, 'id_lingkungan', 'nama_lingkungan');
     }
 
     public static function getListEkonomi($id = Null){
         $row = Ekonomi::find()->all();
-        $list = ArrayHelper::map($row, 'id_ekonomi', 'kriteria_ekonomi');
-        return self::getList($id, $list);
+        return  ArrayHelper::map($row, 'id_ekonomi', 'kriteria_ekonomi');
     }
 
     public static function getListJenisRt($id = Null){
         $row = JenisRt::find()->all();
-        $list = ArrayHelper::map($row, 'id_jenis_rt', 'kriteria_rt');
-        return self::getList($id, $list);
+        return  ArrayHelper::map($row, 'id_jenis_rt', 'kriteria_rt');
     }
 
     public static function getListAgama($id = Null){
         $row = Agama::find()->all();
-        $list = ArrayHelper::map($row, 'id_agama', 'nama_agama');
-        return self::getList($id, $list);
+        return  ArrayHelper::map($row, 'id_agama', 'nama_agama');
     }
 
     public static function getListHubKk($id = Null){
         $row = HubunganKk::find()->all();
-        $list = ArrayHelper::map($row, 'id_hub_kk', 'deskripsi_hub_kk');
-        return self::getList($id, $list);
+        return  ArrayHelper::map($row, 'id_hub_kk', 'deskripsi_hub_kk');
     }
 
     public static function getListSuku($id = Null){
         $row = SukuBangsa::find()->all();
-        $list = ArrayHelper::map($row, 'id_suku', 'deskripsi_suku');
-        return self::getList($id, $list);
+        return  ArrayHelper::map($row, 'id_suku', 'deskripsi_suku');
     }
 
     public static function getListPendidikan($id = Null){
         $row = Pendidikan::find()->all();
-        $list = ArrayHelper::map($row, 'id_pendidikan', 'deskripsi_pendidikan');
-        return self::getList($id, $list);
+        return  ArrayHelper::map($row, 'id_pendidikan', 'deskripsi_pendidikan');
     }
 
     public static function getListBidStudi($id = Null){
         $row = BidangStudi::find()->all();
-        $list = ArrayHelper::map($row, 'id_bidstudi', 'deskripsi_bidstudi');
-        return self::getList($id, $list);
+        return  ArrayHelper::map($row, 'id_bidstudi', 'deskripsi_bidstudi');
     }
 
     public static function getListPekerjaan($id = Null){
         $row = Pekerjaan::find()->all();
-        $list = ArrayHelper::map($row, 'id_pekerjaan', 'deskripsi_pekerjaan');
-        return self::getList($id, $list);
+        return  ArrayHelper::map($row, 'id_pekerjaan', 'deskripsi_pekerjaan');
     }
 
     public static function getListGolDar($id = Null){
         $row = GolonganDarah::find()->all();
-        $list = ArrayHelper::map($row, 'id_goldar', 'deskripsi_goldar');
-        return self::getList($id, $list);
+        return  ArrayHelper::map($row, 'id_goldar', 'deskripsi_goldar');
     }
 
     public static function getListStsSehat($id = Null){
         $row = StatusKesehatan::find()->all();
-        $list = ArrayHelper::map($row, 'id_sts_sehat', 'deskripsi_sts_sehat');
-        return self::getList($id, $list);
+        return  ArrayHelper::map($row, 'id_sts_sehat', 'deskripsi_sts_sehat');
     }
 
     public static function getListWktBaptis($id = Null){
         $row = WaktuBaptis::find()->all();
-        $list = ArrayHelper::map($row, 'id_wkt_baptis', 'deskripsi_wkt_baptis');
-        return self::getList($id, $list);
+        return  ArrayHelper::map($row, 'id_wkt_baptis', 'deskripsi_wkt_baptis');
     }
 
     public static function getListStsKawin($id = Null){
         $row = StatusPerkawinan::find()->all();
-        $list = ArrayHelper::map($row, 'id_sts_kawin', 'deskripsi_sts_kawin');
-        return self::getList($id, $list);
+        return  ArrayHelper::map($row, 'id_sts_kawin', 'deskripsi_sts_kawin');
     }
 
     public static function getListJbtSosial($id = Null){
         $row = JabatanSosial::find()->all();
-        $list = ArrayHelper::map($row, 'id_jbt_sosial', 'deskripsi_jbt_sosial');
-        return self::getList($id, $list);
+        return  ArrayHelper::map($row, 'id_jbt_sosial', 'deskripsi_jbt_sosial');
     }
 
     public static function getListStsGerejawi($id = Null){
         $row = StatusGerejawi::find()->all();
-        $list = ArrayHelper::map($row, 'id_sts_gerejawi', 'deskripsi_sts_gerejawi');
-        return self::getList($id, $list);
+        return  ArrayHelper::map($row, 'id_sts_gerejawi', 'deskripsi_sts_gerejawi');
     }
 
     public static function getListKeterlibatan($id = Null){
         $row = Keterlibatan::find()->all();
-        $list = ArrayHelper::map($row, 'id_keterlibatan', 'deskripsi_keterlibatan');
-        return self::getList($id, $list);
+        return ArrayHelper::map($row, 'id_keterlibatan', 'deskripsi_keterlibatan');
     }
 
     public static function getList($id, $list){
@@ -265,5 +246,81 @@ class Umat extends \yii\db\ActiveRecord
             return isset($list[$id]) ? $list[$id] : '';
         }
     }
+
+    public function getAgama(){
+        return $this->hasOne(Agama::className(), ['id_agama' => 'id_agama']);
+    }
+
+    public function getHubkk(){
+        return $this->hasOne(HubunganKk::className(), ['id_hub_kk' => 'id_hub_kk']);
+    }
+
+    public function getKeuskupan(){
+        return $this->hasOne(Keuskupan::className(), ['id_keuskupan' => 'id_keuskupan']);
+    }
+
+    public function getParoki(){
+        return $this->hasOne(Paroki::className(), ['id_paroki' => 'id_paroki']);
+    }
+
+    public function getWilayah(){
+        return $this->hasOne(Wilayah::className(), ['id_wilayah' => 'id_wilayah']);
+    }
+
+    public function getLingkungan(){
+        return $this->hasOne(Lingkungan::className(), ['id_lingkungan' => 'id_lingkungan']);
+    }
+
+    public function getEkonomi(){
+        return $this->hasOne(Ekonomi::className(), ['id_ekonomi' => 'id_ekonomi']);
+    }
+
+    public function getJenisrt(){
+        return $this->hasOne(JenisRt::className(), ['id_jenis_rt' => 'id_jenis_rt']);
+    }
     
+    public function getSuku(){
+        return $this->hasOne(SukuBangsa ::className(), ['id_suku' => 'id_suku']);
+    }
+
+    public function getPendidikan(){
+        return $this->hasOne(Pendidikan::className(), ['id_pendidikan' => 'id_pendidikan']);
+    }
+
+    public function getBidangstudi(){
+        return $this->hasOne(BidangStudi::className(), ['id_bidstudi' => 'id_bidstudi']);
+    }
+
+    public function getPekerjaan(){
+        return $this->hasOne(Pekerjaan::className(), ['id_pekerjaan' => 'id_pekerjaan']);
+    }
+
+    public function getGolongandarah(){
+        return $this->hasOne(GolonganDarah::className(), ['id_goldar' => 'id_goldar']);
+    }
+
+    public function getStatuskesehatan(){
+        return $this->hasOne(StatusKesehatan::className(), ['id_sts_sehat' => 'id_sts_sehat']);
+    }
+
+    public function getWaktubaptis(){
+        return $this->hasOne(WaktuBaptis::className(), ['id_wkt_baptis' => 'id_wkt_baptis']);
+    }
+
+    public function getStatusperkawinan(){
+        return $this->hasOne(StatusPerkawinan::className(), ['id_sts_kawin' => 'id_sts_kawin']);
+    }
+
+    public function getJabatansosial(){
+        return $this->hasOne(JabatanSosial::className(), ['id_jbt_sosial' => 'id_jbt_sosial']);
+    }
+
+    public function getStatusgerejawi(){
+        return $this->hasOne(StatusGerejawi::className(), ['id_sts_gerejawi' => 'id_sts_gerejawi']);
+    }
+
+    public function getKeterlibatan(){
+        return $this->hasOne(Keterlibatan::className(), ['id_keterlibatan' => 'id_keterlibatan']);
+    }
+
 }

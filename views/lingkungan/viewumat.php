@@ -24,14 +24,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'nama_anggota_rt',
             [
                 'attribute' => 'id_hub_kk',
-                'value' => function ($data) {
-                    return $data::getListHubKk($data->id_hub_kk, TRUE);
-                },
+                'value' => 'hubkk.deskripsi_hub_kk',
             ],            [
                 'attribute' => 'id_agama',
-                'value' => function ($data) {
-                    return $data::getListAgama($data->id_agama, TRUE);
-                },
+                'value' => 'agama.nama_agama',
             ],
             [
                 'attribute' => 'jen_kel',

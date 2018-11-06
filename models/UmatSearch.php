@@ -42,7 +42,25 @@ class UmatSearch extends Umat
     public function search($params, $id=NULL, $attr=Null, $id_lingkungan=NULL)
     {
         $query = Umat::find()
-            ->innerJoin('agama', '`umat`.`id_agama` = `agama`.`id_agama`');
+            ->innerJoinWith('agama', true)
+            ->innerJoinWith('hubkk', true)
+            ->innerJoinWith('keuskupan', true)
+            ->innerJoinWith('paroki', true)
+            ->innerJoinWith('wilayah', true)
+            ->innerJoinWith('lingkungan', true)
+            ->innerJoinWith('ekonomi', true)
+            ->innerJoinWith('jenisrt', true)
+            ->innerJoinWith('suku', true)
+            ->innerJoinWith('pendidikan', true)
+            ->innerJoinWith('bidangstudi', true)
+            ->innerJoinWith('pekerjaan', true)
+            ->innerJoinWith('golongandarah', true)
+            ->innerJoinWith('statuskesehatan', true)
+            ->innerJoinWith('waktubaptis', true)
+            ->innerJoinWith('statusperkawinan', true)
+            ->innerJoinWith('jabatansosial', true)
+            ->innerJoinWith('statusgerejawi', true)
+            ->innerJoinWith('keterlibatan', true);
 
         // add conditions that should always apply here
 
@@ -78,7 +96,7 @@ class UmatSearch extends Umat
             }    
 
             if($id_lingkungan != NULL){
-                $query->andFilterWhere(['id_lingkungan' => $id_lingkungan]);
+                $query->andFilterWhere(['uamt.id_lingkungan' => $id_lingkungan]);
             }   
              
         return $dataProvider;
